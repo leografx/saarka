@@ -1,0 +1,31 @@
+
+	<div class="row-fluid">	
+        <div class="row">
+			<div class="col-xs-12">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button (click)="getAllMolds();moldModel=''" class="btn btn-default" type="button">
+						Molds <span class="caret"></span></button>	
+					</span>
+					<input (focus)="$event.target.select()" type="text" class="form-control" [(ngModel)]="moldModel" placeholder="Molds...">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="toggleMold" class="row-fluid">
+		<div class="list-group">
+		  <a *ngFor="let mold of molds |filter:moldModel;index as i" (click)="toggleMold=!toggleMold;moldModel=mold.description;moldSelected(mold,i)" class="list-group-item">
+		  	<div class="row">
+		  		<div class="col-xs-3">
+		  			{{ mold.description }}
+		  		</div>
+		  		<div class="col-xs-3">
+		  			 {{ mold.type }}
+		  		</div>
+		  		<div class="col-xs-3">
+		  			 {{ mold.capacity }} {{ mold.uom }}
+		  		</div>
+		  	</div> 
+		  </a>
+		</div>
+	</div>

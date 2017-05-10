@@ -1,0 +1,61 @@
+$aqua:rgba(135,226,209,1);
+$purple:rgb(69,58,113);
+$purpleLight:rgba(69,58,113,.1);
+$blue:rgba(51, 122, 183,1);
+$blueLight:rgba(51, 122, 183,.1);
+$red:rgba(156, 0, 102, 1);
+$redLight:rgba(156, 0, 102, .1);
+
+.aqua{
+	background-color: $aqua;
+	color:$purple;
+}
+.purple{
+	background-color: $purple;
+	color:$aqua;
+}
+.purple-light{
+	background-color: $purpleLight;
+	color:$purple;
+}
+
+.blue{
+	background-color: $blue;
+}
+.blue-light{
+	background:$blueLight;
+	color:$blue;
+}
+
+.red{
+	background-color: $red;
+}
+.red-light{
+	background-color: $redLight;
+}
+
+.box{
+	width:50px;
+	font-weight:bold;
+}
+
+.box-padding{
+	width:85px;
+}
+
+.box-header{
+	width:85px;
+}
+
+.table>tbody>tr>td{
+	padding:0px 1px 0px 0px;
+}
+
+td{
+	text-align: center;
+}
+
+.annie-label{
+	display:inline-block;
+	text-align: center;
+}

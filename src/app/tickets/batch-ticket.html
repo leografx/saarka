@@ -1,0 +1,299 @@
+<div class="annies-paper container-fluid">
+	<div class="logos row-fluid">
+		
+		<div class="logo-batch col-xs-3">
+			<img class="img-responsive" [src]="'assets/images/logo.png'"/>
+		</div>
+		<div class="logo text-center col-xs-6"> 
+			<h1> Batch Ticket </h1>
+			<h2> <span class="label label-primary">{{ ticket.formula_no }}</span> &nbsp; {{ ticket.formula_name }}</h2>
+		</div>
+		<div class="logo2-batch col-xs-3">
+			<img class="img-responsive" [src]="'../assets/images/logo2.png'" />
+		</div>
+
+	</div>
+	<div class="row-fluid">
+		<div class="col-xs-4 table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Packing Date</th>
+						<th>Built Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ ticket.packing_date }}</td>
+						<td>{{ ticket.built_date }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="department-letter col-xs-4 text-center">
+			<div class="department"> 
+				<span class="label label-primary">{{ ticket.department_code }} </span>
+				<p> {{ ticket.department }} </p>
+			</div>	
+		</div>
+		<div class="col-xs-4 table-responsive">
+			<h2>Order Size</h2>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Units</th>
+						<th>Trays</th>
+						<th>Packing Trays</th>
+						<th>Cases</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ ticket.order_size.units }}</td>
+						<td>{{ ticket.order_size.trays }}</td>
+						<td>{{ ticket.order_size.packing_trays }}</td>
+						<td>{{ ticket.order_size.cases }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="col-xs-4 table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>LOT#</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ ticket.lot_no }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="col-xs-12 table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Formula #</th>
+						<th> Total Weight </th>
+						<th> Loss % </th>
+						<th> Last revised</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td> <strong>{{ ticket.formula_no }}</strong></td>
+						<td> {{ ticket.total_weight }} {{ ticket.total_weight_uom }}</td>
+						<td> {{ ticket.loss_percentage }} </td>
+						<td> {{ ticket.last_revised }} </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="col-xs-12 table-responsive">
+			<table class="table  table.bordered">
+				<thead>
+					<tr>
+						<th>Sliced/Trimmed</th>
+						<th> Built </th>
+						<th> Packaging </th>
+						<th> Warehouse </th>
+						<th> Specifications </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="table-section">
+							<tbody>
+								<tr>
+									<td> Date</td> 
+									<td> {{ ticket.slice_trimmed.date }} </td>
+								</tr>
+								<tr>
+									<td>Sliced By</td>
+									<td> {{ ticket.slice_trimmed.sliced_by }} </td>
+								</tr>
+								<tr>
+									<td>Amt of Cakes</td>
+									<td> {{ ticket.slice_trimmed.amt_of_cakes }} </td>
+								</tr>
+								<tr>
+									<td>Loss if any</td>
+									<td> {{ ticket.slice_trimmed.loss_if_any }} </td>
+								</tr>
+							</tbody>
+						</td>
+						<td class="table-section">
+							<tbody>
+								<tr>
+									<td> Date</td> 
+									<td> {{ ticket.built.date }} </td>
+								</tr>
+								<tr>
+									<td>Sliced By</td>
+									<td> {{ ticket.built.sliced_by }} </td>
+								</tr>
+								<tr>
+									<td>Amt of Cakes</td>
+									<td> {{ ticket.built.amt_of_trays }} </td>
+								</tr>
+								<tr>
+									<td>Amt of trays</td>
+									<td> {{ ticket.built.loss_if_any }} </td>
+								</tr>
+							</tbody>
+						</td>
+						<td class="table-section">
+							<tbody>
+								<tr>
+									<td> Date</td> 
+									<td> {{ ticket.packaging.date }} </td>
+								</tr>
+								<tr>
+									<td>Pack By</td>
+									<td> {{ ticket.packaging.pack_by }} </td>
+								</tr>
+								<tr>
+									<td>Amt of CS</td>
+									<td> {{ ticket.packaging.amt_of_cs }} </td>
+								</tr>
+								<tr>
+									<td>Amt of loss if any</td>
+									<td> {{ ticket.packaging.loss_if_any }} </td>
+								</tr>
+								<tr>
+									<td>Label</td>
+									<td> {{ ticket.packaging.label }} </td>
+								</tr>
+							</tbody>
+						</td>
+						<td class="table-section">
+							<tbody>
+								<tr>
+									<td> Date</td> 
+									<td> {{ ticket.warehouse.date }} </td>
+								</tr>
+								<tr>
+									<td>Pack By</td>
+									<td> {{ ticket.warehouse.rev_by }} </td>
+								</tr>
+								<tr>
+									<td>Amt of CS</td>
+									<td> {{ ticket.warehouse.amt_of_cs }} </td>
+								</tr>
+								<tr>
+									<td>Amt of loss if any</td>
+									<td> {{ ticket.warehouse.verifier }} </td>
+								</tr>
+								<tr>
+									<td>Label</td>
+									<td> {{ ticket.warehouse.label }} </td>
+								</tr>
+							</tbody>
+						</td>
+						<td class="table-section">
+							<tbody>
+								<tr>
+									<td> Weight Finished</td> 
+									<td> {{ ticket.specifications.weight_finished }} {{ ticket.specifications.weight_uom }}  </td>
+								</tr>
+								<tr>
+									<td>Unit Diameter</td>
+									<td> {{ ticket.specifications.unit_diameter }} </td>
+								</tr>
+								<tr>
+									<td>Pack size</td>
+									<td> {{ ticket.specifications.pack_size }} </td>
+								</tr>
+								<tr>
+									<td>Pallet</td>
+									<td> {{ ticket.specifications.pallet }} </td>
+								</tr>
+							</tbody>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="text-center col-xs-12"> 
+				<h1> MATERIALS </h1>
+			<table class="table table-responsive">
+				<thead>
+					<tr>
+						<th>Item#</th>
+						<th>Item Description</th>
+						<th>Amount per Unit</th>
+						<th>UOM</th>
+						<th>Lot Number</th>
+						<th>In Process Weight</th>
+					</tr>
+					<tr *ngFor="let material of ticket.materials">
+						<td>{{ material.item_no }}</td>
+						<td>{{ material.item_description }}</td>
+						<td>{{ material.amount_per_unit }}</td>
+						<td>{{ material.uom }}</td>
+						<td>{{ material.lot_no}}</td>
+						<td>{{ material.in_process_weight }} {{ material.in_process_weight_uom }}</td>
+					</tr>
+					
+				</thead>
+			</table>
+		</div>
+	</div>	
+	<div class="row-fluid">
+		<div class="text-center col-xs-12"> 
+				<h1> INSTRUCTIONS </h1>
+			<table class="table table-responsive">
+				<tbody >
+					<tr  *ngFor="let instruction of ticket.instructions">
+						<td>{{ instruction.step_no }}</td>
+						<td class="text-left">{{ instruction.step }}</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="text-center col-xs-12"> 
+				<h1> BOM SECTION </h1>
+			<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>Item#</th>
+							<th>Item Description</th>
+							<th>Amt per case</th>
+							<th>Total Amount</th>
+							<th>UOM</th>
+							<th>LOT Number</th>
+							<th>Verifier</th>
+						</tr>
+					</thead>
+				<tbody>
+					<tr  *ngFor="let bom of ticket.bom_sections">
+						<td>{{ bom.item_no }}</td>
+						<td class="text-left">{{ bom.item_description }}</td>
+						<td>{{ bom.amt_per_case }}</td>
+						<td>{{ bom.total_amount }}</td>
+						<td>{{ bom.uom }}</td>
+						<td>{{ bom.lot_no }}</td>
+						<td>{{ bom.verifier }}</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

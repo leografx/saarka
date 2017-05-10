@@ -1,0 +1,24 @@
+
+<div class="form-group">
+	<div class="input-group">
+		<span class="input-group-btn">
+			<button (click)="showCustomers=true;customerModel=''" type="button" class="btn btn-default dropdown-toggle">Customers 
+				<span class="caret"></span>
+			</button>
+		</span>
+		<input
+		(keyup)="inputCustomer()" 
+		(focus)="$event.target.select();showCustomers=false;" 
+		[(ngModel)]="customerModel" 
+		type="text" 
+		class="form-control" 
+		placeholder="Customers"/>
+	</div>
+
+	<div class="list-group customer-picker" *ngIf="showCustomers" >
+		<a (click)="selectedCustomer(customer);customerModel=customer.name" class="list-group-item"
+			*ngFor="let customer of customers |filter:customerModel">{{customer.name}}
+		</a>
+	</div>
+</div>
+	

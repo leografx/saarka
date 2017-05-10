@@ -1,0 +1,60 @@
+@media print {
+	h1,h2{
+		margin-top: 5px;
+		font-size: 15pt;
+	}
+	h1:first-child{
+		text-align: center;
+	}	
+}
+
+.department p{
+	margin-top: 10px;
+}
+.department-letter div{
+	font-size: 7em;
+	font-family: "georgia";
+	font-weight: bold;
+}
+.department-letter div p{
+	font-weight: normal;
+	font-size: 18px;
+}
+
+.table th, .table td{
+	text-align: center;
+}
+
+.table th{
+	font-weight: bold;
+	font-size: 1.2em;
+}
+.table tr td tr td{
+	text-align: left;
+	padding:5px;
+}
+.table tr td tr td:last-child {
+	text-align: right;
+	min-width:70px;
+}
+.table-section{
+	border:1px solid rgba(192, 192, 192, 1);
+	padding-right:5px;
+}
+
+.table .text-left{
+	text-align: left;
+}
+.logo-batch img{
+	height: 90px;
+}
+
+.logo2-batch img{
+	position:relative;
+	left:40px;
+	height: 80px;
+}
+
+.logos{
+	display: block;
+}

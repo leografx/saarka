@@ -1,0 +1,26 @@
+
+	<div class="row-fluid">	
+        <div class="row">
+			<div class="col-xs-12">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button (click)="getAllDepartments();departmentModel=''" class="btn btn-default" type="button">
+						Departments <span class="caret"></span></button>	
+					</span>
+					<input (focus)="$event.target.select()" type="text" class="form-control" [(ngModel)]="departmentModel" placeholder="Department...">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div *ngIf="toggleDepartment" class="row-fluid">
+		<div class="list-group">
+		  <a *ngFor="let department of departments |filter:departmentModel;index as i" (click)="toggleDepartment=!toggleDepartment;departmentModel=department.description;departmentSelected(department,i)" class="list-group-item">
+		  	<div class="row">
+		  		<div class="col-xs-12">
+		  			{{ department.name }}
+		  		</div>
+		  	</div> 
+		  </a>
+		</div>
+	</div>

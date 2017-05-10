@@ -1,0 +1,79 @@
+<div class="row">
+	<fieldset class="form-group col-md-4">
+		<label for="date">Date</label>
+		<input type="text" 
+			class="form-control" 
+			id="customer" 
+			[ngModel]="customer.date|date:'shortDate'" 
+			(keyup)="customerData()"
+			(focus)="showDateDatepicker=true"
+			placeholder="Order Date">
+		<datepicker class="datepicker-bg" onlyCurrentMonth="true"  *ngIf="showDateDatepicker" (selectionDone)="showDateDatepicker=false;customer.date=$event"></datepicker>
+	</fieldset>
+</div>
+<div class="row">
+	<fieldset class="form-group col-md-12">
+		<label for="customer">Customer</label>
+		<input type="text" 
+			class="form-control" 
+			id="customer" [(ngModel)]="customer.name" 
+			(keyup)="customerData()"
+			placeholder="Customer">
+	</fieldset>
+	<fieldset class="form-group col-md-7">
+		<label for="contact">Contact</label>
+		<input type="text" 
+			class="form-control" 
+			id="contact" [(ngModel)]="customer.contact" 
+			(keyup)="customerData()"
+			placeholder="Contact">
+	</fieldset>
+	<fieldset class="form-group col-md-5">
+		<label for="phone">Phone#</label>
+		<input type="text" 
+			class="form-control" 
+			id="phone" [(ngModel)]="customer.phone"
+			(keyup)="customerData()"  
+			placeholder="Phone #">
+	</fieldset>
+	<fieldset class="form-group col-md-12">
+		<label for="email">Email</label>
+		<input type="text" 
+			class="form-control" 
+			id="email" [(ngModel)]="customer.email"
+			(keyup)="customerData()"
+			placeholder="Email">
+	</fieldset>
+	<fieldset class="form-group col-md-12">
+		<label for="address">Address</label>
+		<input type="text" 
+			class="form-control" 
+			id="address" [(ngModel)]="customer.address" 
+			(keyup)="customerData()" 
+			placeholder="Address">
+	</fieldset>
+	<fieldset class="form-group col-md-7">
+		<label for="city">City</label>
+		<input type="text" 
+			class="form-control" 
+			id="city" [(ngModel)]="customer.city" 
+			(keyup)="customerData()" 
+			placeholder="City">
+	</fieldset>
+	<fieldset class="form-group col-md-2">
+		<label for="state">State</label>
+		<input type="text" 
+			class="form-control" 
+			id="state" [(ngModel)]="customer.state"
+			(keyup)="customerData()"  
+			placeholder="State">
+	</fieldset>
+	<fieldset class="form-group col-md-3">
+		<label for="zip">Zip</label>
+		<input type="text" 
+			class="form-control" 
+			id="zip" [(ngModel)]="customer.zip" 
+			(keyup)="customerData()" 
+			placeholder="Zipcode">
+	</fieldset>
+</div>

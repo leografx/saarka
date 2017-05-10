@@ -1,0 +1,51 @@
+<button 
+  type="button" 
+  class="btn btn-primary round fixed shadow" 
+  *ngIf="!customerSelected"
+  (click)="staticModal.show()">
+  <span class="fa fa-plus"></span>
+</button>
+
+<button 
+  *ngIf="customerSelected" 
+  type="button" 
+  class="btn btn-primary round fixed shadow" 
+  (click)="editModal.show();">
+  <span class="fa fa-edit"></span>
+</button>
+
+
+ 
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">New Customer</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <create-customer [staticModal]="staticModal"></create-customer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #editModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit Customer</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="editModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <edit-customer [customer]="customerSelected"></edit-customer>
+      </div>
+    </div>
+  </div>
+</div>

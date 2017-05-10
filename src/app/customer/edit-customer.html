@@ -1,0 +1,58 @@
+<div class="row">
+	<fieldset class="form-group col-md-12">
+		<label for="customer">Customer</label>
+		<input type="text" 
+			class="form-control" 
+			id="customer" (keyup)="updateCustomer(customer)" [(ngModel)]="customer.name" 
+			placeholder="Customer">
+	</fieldset>
+	<fieldset class="form-group col-md-7">
+		<label for="contact">Contact</label>
+		<input type="text" 
+			class="form-control" 
+			id="contact" (keyup)="updateCustomer(customer)" [(ngModel)]="customer.contact" 
+			placeholder="Contact">
+	</fieldset>
+	<fieldset class="form-group col-md-5">
+		<label for="phone">Phone#</label>
+		<input type="text" 
+			class="form-control" 
+			id="phone" (keyup)="updateCustomer(customer)" [(ngModel)]="customer.phone"  
+			placeholder="Phone #">
+	</fieldset>
+	<fieldset class="form-group col-md-12">
+		<label for="email">Email</label>
+		<input type="text" 
+			class="form-control" 
+			id="email" (keyup)="updateCustomer(customer)" [(ngModel)]="customer.email"
+			placeholder="Email">
+	</fieldset>
+	<fieldset class="form-group col-md-12">
+		<label for="address">Address</label>
+		<input type="text" 
+			class="form-control" 
+			id="address" (keyup)="updateCustomer(customer)" [(ngModel)]="customer.address"  
+			placeholder="Address">
+	</fieldset>
+	<fieldset class="form-group col-md-7">
+		<label for="city">City</label>
+		<input type="text" 
+			class="form-control" 
+			id="city" (keyup)="updateCustomer(customer)" [(ngModel)]="customer.city"  
+			placeholder="City">
+	</fieldset>
+	<fieldset class="form-group col-md-2">
+		<label for="state">State</label>
+		<input type="text" 
+			class="form-control" 
+			id="state" (keyup)="updateCustomer(customer)" [(ngModel)]="customer.state"  
+			placeholder="State">
+	</fieldset>
+	<fieldset class="form-group col-md-3">
+		<label for="zip">Zip</label>
+		<input type="text" 
+			class="form-control" 
+			id="zip" (keyup)="updateCustomer(customer)" [(ngModel)]="customer.zip"  
+			placeholder="Zipcode">
+	</fieldset>
+</div>

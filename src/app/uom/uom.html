@@ -1,0 +1,15 @@
+
+<div class="input-group">
+	<span class="input-group-btn">
+		<button (click)="uomModel='';collapse=true" class="btn btn-default" type="button">
+		<span class="caret"></span></button>	
+	</span>
+	<input (focus)="$event.target.select()" type="text" class="form-control" [(ngModel)]="uomModel"  placeholder="UOM">
+	<div *ngIf="collapse" class="uom-list text-center list-group list">
+		<a (click)="uomSelected(unit);uomModel=unit;collapse=false" class="list-group-item" *ngFor="let unit of uom">{{ unit }}</a>
+	</div>
+</div>
+
+
+
+

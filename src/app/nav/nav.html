@@ -1,0 +1,91 @@
+
+<div [hidden]="!toggleMenu" id="sidebar-wrapper">
+   
+    <ul class="sidebar-nav">
+        <li>
+            <div  class="branding">
+                <img class="logo img-responsive hidden-print" [src]="'assets/images/logo.png'"/>
+            </div>
+        </li>
+        <li>
+            <a routerLinkActive="active" routerLink="/customers">Customers</a>
+        </li>
+        <li>
+            <a routerLinkActive="active" routerLink="/users">Users</a>
+        </li>
+        <li>
+            <a  (click)="toggleOrders=!toggleOrders" routerLinkActive="active" routerLink="/sales"> Sales 
+                <span class="caret"></span>
+            </a>
+            
+            <ul *ngIf="toggleOrders" class="nav annies-toggle-link">
+                <li>
+                    <a routerLinkActive="active" routerLink="/sales-orders"> <span class="fa fa-handshake-o"></span> Sales Orders</a>
+                </li>
+
+                <li>
+                    <a routerLinkActive="active" routerLink="/sales-reports"> <span class="fa fa-list"></span> Sales Reports</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a routerLinkActive="active" routerLink="/products"> <span class="fa fa-list"></span> Products</a>
+        </li>
+        <li>
+            <a routerLinkActive="active" routerLink="/product-inventory"> <span class="fa fa-list"></span> Product Inventory</a>
+        </li>
+
+        <li>
+            <a routerLinkActive="active" routerLink="/vendors"> <span class="fa fa-list"></span> Vendors </a>
+        </li>
+        <li>
+          
+                    <a (click)="toggleProduction=!toggleProduction" routerLinkActive="active" routerLink="/production" href="#">Production <span class="caret"></span> 
+                    </a>
+
+            <ul *ngIf="toggleProduction" class="nav annies-toggle-link">
+                <li>
+                    <a routerLinkActive="active" routerLink="/batch-ticket" href="#"> <span class="fa fa-ticket"></span> Batch Ticket</a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/build-ticket" href="#"> <span class="fa fa-ticket"></span> Build Ticket</a>
+                </li>
+
+                <li>
+                    <a routerLinkActive="active" routerLink="/planner"> <span class="fa fa-calendar"></span> Planner</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a routerLinkActive="active" routerLink="/baking" href="#">Baking</a>
+        </li>
+
+        <li>
+            <a routerLinkActive="active" routerLink="/formulas" href="#">  <span class="fa fa-flask"></span> Formulas</a>
+        </li>
+
+        <li>
+            <a routerLinkActive="active" routerLink="/purchasing" href="#">Purchasing</a>
+        </li>
+
+        <li>
+            <a routerLinkActive="active" routerLink="/purchasing" href="#"> <span class="fa fa-file"></span> Purchase Orders</a>
+        </li>
+
+        <li>
+            <a routerLinkActive="active" routerLink="/purchasing-report" href="#"> <span class="fa fa-list"></span> Purchasing Report</a>
+        </li>
+
+         <li>
+            <a routerLinkActive="active" routerLink="/molds" href="#">Molds</a>
+        </li>
+
+        <li>
+            <a routerLinkActive="active" routerLink="/materials" href="#">Materials</a>
+        </li>
+        <li>
+            <a routerLinkActive="active" routerLink="/material-inventory" href="#">Material Inventory</a>
+        </li>
+    </ul>
+</div>

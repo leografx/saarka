@@ -1,3 +1,36 @@
-<h1>
-  {{title}}
-</h1>
+<logout *ngIf="isLoggedIn" (logmeout)="logout($event)"></logout>
+  
+  <annies-nav *ngIf="isLoggedIn" [toggleMenu]="toggleMenu"></annies-nav>
+
+  <div id="header" class="container-fluid">
+  	<div class="row">
+		<div class="col-md-12 header">
+			
+		</div>
+	</div>
+ </div> 
+  <div id="page-content-wrapper" class="container-fluid" [ngClass]="{'toggled':toggleMenu}">
+	
+	<span *ngIf="toggleMenu" 
+		class="fa fa-toggle-on menu-toggle"  
+		(click)="toggleMenu=!toggleMenu"> 
+	</span>
+   	
+   	<span *ngIf="!toggleMenu" 
+   		class="fa fa-toggle-off menu-toggle"  
+   		(click)="toggleMenu=!toggleMenu"> 
+   	</span>
+  	
+	<div  class="row">
+		<div class="col-md-12">
+			<login *ngIf="!isLoggedIn" (isLoggedIn)="login($event)"></login>
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>	
+
+		
+
+	
+
+		

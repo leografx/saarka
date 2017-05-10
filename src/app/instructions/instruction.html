@@ -1,0 +1,21 @@
+
+<div class="row-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">Step #{{step_no}}</button>
+				</span>
+				<input type="text" (keyup)="stepInstruction()" [(ngModel)]="step" class="form-control" placeholder="Instruction">
+				<span class="input-group-btn">
+					<button *ngIf="isLast" (click)="addInstruction()" class="btn btn-primary" type="button"> 
+					<span class="fa fa-plus"></span> </button>
+					<button *ngIf="!isLast" (click)="deleteInstruction()" class="btn btn-danger" type="button">
+						<span class="fa fa-close"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+

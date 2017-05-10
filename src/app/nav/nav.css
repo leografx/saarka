@@ -1,0 +1,15 @@
+.nav>li>a:hover{
+	background-color: rgba(0, 206, 175, .5);
+}
+.nav>li>a{
+	height:40px;
+	padding: 0px;
+}
+
+.branding{
+	margin: 10px;
+}
+.branding img{
+	margin-left: 20px;
+	height: 60px;
+}

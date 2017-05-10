@@ -1,0 +1,37 @@
+	<div class="row-fluid">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button (click)="showMaterials=!showMaterials;materialModel=''" class="btn btn-default" type="button">
+						Materials <span class="caret"></span></button>	
+					</span>
+					<input (focus)="$event.target.select();showMaterials=true" type="text" [(ngModel)]="materialModel" class="form-control">
+				</div>
+
+				<div class="list-group" *ngIf="showMaterials">
+				  	<a (click)="selected(material,i);showMaterials=false"
+						class="list-group-item {{ isOn[i] }}"
+				  		*ngFor="let material of materials | filter:materialModel;index as i;">
+						<div class="row">		
+				  			<div class="col-md-2">{{ material.item_no }}</div>
+				  			<div class="col-md-5">{{ material.name }}</div>
+				  			<div class="col-md-2">{{ material.weight }}</div>
+				  			<div class="col-md-2">{{ material.size }}</div>
+				  			<div class="col-md-1">{{ material.lbs }}</div>
+						</div>	
+				  	</a>
+
+				  	<a (click)="addNewItem();showMaterials=false" class="list-group-item">
+						<div class="row">		
+				  			<div class="col-md-2">{{ materialModel }}</div>
+				  			<div class="col-md-5"></div>
+				  			<div class="col-md-2"></div>
+				  			<div class="col-md-2"></div>
+				  			<div class="col-md-1"></div>
+						</div>	
+				  	</a>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,95 @@
+<table  class="box" 
+  [ngClass]="{'empty':calendar.empty}">
+	<tr [ngClass]="{'date-box':!calendar.empty,'date-box-empty':calendar.empty}">
+		<td colspan="3" class="date text-right">{{ calendar.medDate|date:'MMM d' }}</td>
+	</tr>
+	<tr *ngIf="!calendar.empty">
+    <td style="background:rgba(60, 153, 0,.1);" 
+      class="data-item bordered">{{ calendar.data.in }}
+    </td>
+  </tr>
+  <tr *ngIf="!calendar.empty">
+    <td style="background:rgba(0, 102, 255,.1);" 
+      class="data-item bordered">
+        {{ calendar.data.out }}
+    </td>
+  </tr>
+  <tr *ngIf="!calendar.empty">
+    <td [ngClass]="{'alert-shortage': calendar.data.bal < 0 }"  
+      class="data-item bordered balance-td">
+      {{ calendar.data.bal }}
+    </td>
+	</tr>
+  <tr *ngIf="!calendar.empty" style="background:rgba(255, 102, 0,.3)">
+    <td [ngClass]="{'alert-shortage': calendar.data.bal < 0 }"  
+      class="data-item bordered balance-td">
+      {{ calendar.data.planned }}
+    </td>
+  </tr>
+  <!--  
+  <tr *ngIf="!calendar.empty">
+    <td colspan="2">
+        <svg *ngIf="!calendar.empty" 
+          height="120" 
+          width="100%" 
+          style="padding-top:12px;margin-bottom:10px;padding-bottom:12px;" 
+          xmlns="http://www.w3.org/2000/svg" version="1.1" 
+          baseProfile="full">
+             <g *ngIf="showOut">
+                <line 
+                  [attr.x1]="0" 
+                  [attr.y1]="100-((100/1000)*calendar.data.prevOut)" 
+                  [attr.x2]="'100%'" 
+                  [attr.y2]="100-((100/1000)*calendar.data.out)" 
+                  style="stroke:rgba(0, 102, 255,1);
+                  stroke-width:1"/>
+                  
+                  <text x="0" [attr.y]="100-((100/1000)*calendar.data.prevOut)-4" 
+                      font-family="Verdana" font-size="8" fill="rgb(0, 102, 255)" >
+                  {{calendar.data.prevOut}}
+                </text>
+              </g>
+              
+              <g *ngIf="showIn">
+                <line 
+                  [attr.x1]="0" 
+                  [attr.y1]="100-((100/1000)*calendar.data.prevIn)" 
+                  [attr.x2]="'100%'" 
+                  [attr.y2]="100-((100/1000)*calendar.data.in)" 
+                  style="stroke:rgb(51, 204, 51);
+                  stroke-width:1" />
+                
+                <text x="0" [attr.y]="100-((100/1000)*calendar.data.prevBal)-4" 
+                    font-family="Verdana" 
+                    font-size="8" 
+                    fill="rgb(51, 204, 51)" >
+                    {{calendar.data.prevIn}}
+                </text> 
+   
+              </g>
+
+              <g *ngIf="showBal">
+
+
+                <text x="0" [attr.y]="100-((100/1000)*calendar.data.prevBal)-4" 
+                      font-family="Verdana" 
+                      font-size="8" 
+                      fill="rgb(153, 0, 0)" >
+                      {{calendar.data.prevBal}}
+                </text>   
+
+                <line 
+                  [attr.x1]="0" 
+                  [attr.y1]="100-((100/1000)*calendar.data.prevBal)" 
+                  [attr.x2]="'100%'" 
+                  [attr.y2]="100-((100/1000)*calendar.data.bal)" 
+                  style="stroke:rgb(153, 0, 0);
+                  stroke-width:1" />
+              </g>
+      </svg>
+    </td>
+  </tr>
+  -->
+</table>
+
+	

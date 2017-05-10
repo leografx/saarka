@@ -1,1 +1,232 @@
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('assets/fonts/opensans-regular-webfont.woff2') format('woff2'),
+         url('assets/fonts/opensans-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('assets/fonts/opensans-light-webfont.woff2') format('woff2'),
+         url('assets/fonts/opensans-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@media print {
+	.menu-toggle{
+		display: none;
+	}
+	body{
+		margin: 0px;
+		font-size: 9pt;
+	}
+	th{
+		font-size: 10pt;
+	}
+	
+	.annies-paper{
+		width:100%;
+		position:absolute;
+		top:-150px;
+		left:0px;
+	}
+	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+		padding:2px;
+		margin-bottom: 0px;
+	}
+}
+
+
+
+body{
+	background:rgb(203,234,227);
+	font-weight: 300;
+	font-family: 'open_sanslight', sans-serif;
+}
+
+.annies-paper{
+	margin-top: 20px;
+	background-color: rgba(255, 250, 250, .9);
+	box-shadow: 3px 3px 20px rgba(0, 206, 175, .5);
+
+}
+.annies-paper table th{
+	text-align: center;
+}
+
+#header{
+	position:fixed;
+	width:100%;
+	z-index: 999;
+}
+
+.blur{
+	-webkit-filter: blur(3px);
+  	-moz-filter: blur(3px);
+  	-o-filter: blur(3px);
+  	-ms-filter: blur(3px);
+  	filter: blur(3px);
+}
+
+#page-content-wrapper{
+	/*margin-top: 140px;*/
+}
+
+h1{
+	color: rgb(61,52,95) !important;
+}
+
+.header{
+	/*background: rgba(161,212,202,.7);*/
+	padding-top: 10px;
+	padding-bottom:10px;
+}
+
+.logo{
+	height: 30px;
+	/*margin:20px auto;*/
+}
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+	background:rgba(0,206,175,.99);
+	border-color: rgba(69,58,113.5);
+	/*background:rgba(0,206,175,.99);*/
+}
+
+.round{
+	position:absolute;
+	right:20px;
+	top:-50px;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px; 
+	background-color: rgb(61,52,95);
+	border-color: rgba(135,226,209,.99);
+}
+
+.round:hover{
+	background-color:rgba(135,226,209,.95);
+	border-color: rgba(135,226,209,.5);
+}
+
+.round.fixed{
+	position:fixed;
+	top:110px;
+	z-index: 1005;
+}
+
+.btn-primary{
+	color:rgb(61,52,95);
+	background-color:rgba(135,226,209,.99);
+	border-color: rgba(135,226,209,.99);
+}
+
+.btn-primary:hover{ 
+	color:rgba(135,226,209,.99);
+	background-color:rgb(61,52,95); 
+	border-color: rgb(61,52,95);
+}
+
+.btn-primary.shadow{
+	box-shadow: 0px 0px 6px rgb(61,52,95);
+}
+
+.btn-primary.shadow:hover{
+	box-shadow: 0px 0px 6px rgba(135,226,209,.99);
+}
 /* You can add global styles to this file, and also import other style files */
+.datepicker-bg{
+	position:absolute;
+	z-index: 2001;
+	background: rgba(203,234,227,.8);
+}
+
+.small-label{
+	width:30px;
+	font-size:7px;
+	color:rgb(69,58,113);
+	position:relative;
+	top:-3px;
+	margin-right:10px;
+	text-align:right;
+}
+
+.table-cal{
+	padding:10px;
+	overflow: scroll;
+	line-height: 30px;
+}
+
+.fixed{
+	line-height: 30px;
+	position:fixed;
+}
+
+.table-cal td tr td{
+	height:40px;
+	padding:5px;
+}
+
+
+.calendar-box tr td{
+	height:40px;
+	width: 100px;
+	border-collapse: collapse;
+
+}
+
+.box{
+	width:200px;
+}
+
+.tab-content{
+	background:rgba(255, 255, 255, .4);
+	box-shadow: 3px 3px 25px rgba(0, 206, 175, .3);
+}
+
+.annies-primary{
+	background-color: rgba(0, 206, 175, 1)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

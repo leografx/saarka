@@ -1,0 +1,118 @@
+
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<div class="input-group">
+
+					<span class="input-group-btn">
+						
+						<button (click)="showProducts=true;productModel=''" type="button" class="btn btn-default dropdown-toggle">Products 
+							<span class="caret"></span>
+						</button>
+					</span>
+					
+					<input 
+					(focus)="$event.target.select();showProducts=true" 
+					type="text" 
+					[(ngModel)]="productModel" 
+					class="form-control">
+				
+			</div>
+		</div>
+	</div>	
+				
+	<div class="list-group" *ngIf="showProducts">
+	  	<a href="#" (click)="$event.preventDefault();selected(product,$event);showProducts=false"
+			class="list-group-item {{ isOn[i] }}"
+			[ngClass]="{'alert-low':product.on_hand < 10}"
+	  		*ngFor="let product of products | filter:productModel; let i = index; ">
+			<div class="row">		
+	  			<div class="col-md-2">{{ product.item_no }}</div>
+	  			<div class="col-md-5">{{ product.name }}</div>
+	  			<div class="col-md-2">{{ product.case }}</div>
+	  			<div class="col-md-2">{{ product.on_hand }}</div>
+	  			<div class="col-md-1">{{ product.par }}</div>
+			</div>		
+	  	</a>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

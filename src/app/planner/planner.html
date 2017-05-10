@@ -1,0 +1,107 @@
+<h2>Planner</h2>
+<tabset>
+    
+    <!-- /*----------  Planner  ----------*/ -->
+    
+    <tab heading="Planner">
+        <div class="container calendar-settings">
+            <div class="row" *ngIf="items">
+                <div class="col-md-4"></div>
+                <div class="col-md-2 text-right">Days Back </div>
+                <div class="col-md-1">
+                    <input class="form-control" type="number" (keyup)="getItems(product)" [(ngModel)]="numOfDatesBack">
+                </div>
+                <div class="col-md-2 text-right">Days Forward </div>
+                <div class="col-md-1">
+                    <input class="form-control" type="number" (keyup)="getItems(product)" [(ngModel)]="numOfDates">
+                </div>
+            </div>
+        </div>
+        <div class="order-table row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3> 
+                            <span class="label label-primary annies-primary">{{ product.item_no }}</span> {{ product.name }}  <span class="badge">{{ product.available }}</span>
+                        </h3>
+                    </div>
+
+                    <div class="col-md-12" *ngIf="!items">
+                        <products (selectedProduct)="getItems($event)"></products>
+                    </div>
+                </div>
+                
+                <div class="row-fuid" *ngIf="items">
+                    <div class="col-md-12">
+                        <planner-date [product]="product" [items]="items" [calendar]="calendar"></planner-date>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tab>
+
+
+    <!-- /*----------  Orders  ----------*/ -->
+    
+
+    <tab heading="Orders" (select)="getPendingOrders()">
+        <div class="order-table row">
+            <div class="col-md-12">
+                <h2>Orders</h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Ship Date</th>
+                            <th>Customer</th>
+                            <th>Email</th>
+                            <th>Phone | Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let order of pendingOrders">
+                        <tr>
+                            <td>{{ order.ship_date |date:'M/d/yyyy'}} </td>
+                            <td>{{ order.name }} </td>
+                            <td>{{ order.email }} </td>
+                            <td> {{ order.phone }} | {{ order.contact }} </td>
+                            <td><pre>{{ order | json}}</pre></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </tab>
+
+
+    <!-- /*----------  Items  ----------*/ -->
+    
+
+    <tab *ngIf="items" heading="Items" (select)="getPendingItems()">
+        <table class="table table-hover">
+            <tr *ngFor="let item of items">
+                <td>{{ item.order_ship_date |date:'yyyy-M-d'}} </td>
+                <td>{{ item.quantity }} </td>
+                <td> <pre>{{ item |json }} </pre></td>
+            </tr>
+        </table>
+    </tab>
+    <tab heading="Planned">
+        <div class="order-table row">
+            <div class="col-md-12">
+                <h3>Planned</h3>
+            </div>
+        </div>
+    </tab>
+
+
+    <!-- /*----------  Schedule  ----------*/ -->
+    
+
+    <tab heading="Schedule">
+        <div class="order-table row">
+            <div class="col-md-12">
+                <h3>Schedule</h3>
+                <pre> {{ scheduled |json }} </pre>
+            </div>
+        </div>
+    </tab>
+</tabset>

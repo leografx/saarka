@@ -1,0 +1,28 @@
+<div class="row">
+	<fieldset class="form-group col-md-12">
+		<label for="client">Client</label>
+		<input type="text" (keyup)="shippingUpdate()" class="form-control" [(ngModel)]="shipping.client" id="client" placeholder="Client">
+	</fieldset>
+	
+	<fieldset class="form-group col-md-7">
+		<label for="att">Attention</label>
+		<input type="text" (keyup)="shippingUpdate()" class="form-control" [(ngModel)]="shipping.attention" id="att" placeholder="Attention to">
+	</fieldset>
+
+	<fieldset class="form-group col-md-12">
+		<label for="address">Address</label>
+		<input type="text" (keyup)="shippingUpdate()" class="form-control" [(ngModel)]="shipping.address" id="address" placeholder="Address">
+	</fieldset>
+	<fieldset class="form-group col-md-7">
+		<label for="city">City</label>
+		<input type="text" (keyup)="shippingUpdate()" class="form-control" [(ngModel)]="shipping.city" id="city" placeholder="City">
+	</fieldset>
+	<fieldset class="form-group col-md-2">
+		<label for="state">State</label>
+		<input type="text" (keyup)="shippingUpdate()" class="form-control" [(ngModel)]="shipping.state" id="state" placeholder="State">
+	</fieldset>
+	<fieldset class="form-group col-md-3">
+		<label for="zip">Zip</label>
+		<input type="text" (keyup)="shippingUpdate()" class="form-control" [(ngModel)]="shipping.zipcode" id="zip" placeholder="Zipcode">
+	</fieldset>
+</div>

@@ -1,0 +1,72 @@
+.days{
+	width:100%;
+	text-align:center;
+	background-color: rgba(135,226,209,.99);
+}
+.calendar-table{
+	width:100%;
+	overflow: hidden;
+}
+.calendar-table td{
+	background-color: rgba(0, 0, 255, .02);
+	padding:1px;
+	margin-right: 3px;
+	border:1px solid rgba(135,226,209,1);
+}
+
+.calendar-inputs{
+	
+
+}
+
+.graph-container{
+	/*overflow: hidden;*/
+	overflow: scroll;
+}
+
+.bordered td{
+	border:1px solid rgba(135,226,209,1);
+}
+
+.stroke-out{
+	stroke:rgb(0, 102, 255);
+	stroke-width:1;
+}
+
+.box{
+	height: 245px;
+	position: absolute;
+	z-index: 2000;
+}
+.box td span{
+	position: absolute;
+	z-index: 2001;
+	cursor: pointer;
+}
+
+.box td .menu-toggle{
+	position:relative;
+	top:0px;
+
+	left:80px;
+}
+
+.date-box td{
+	height:30px;
+	// background:rgba(61,52,95,.1);
+	color:rgba(61,52,95,1);
+}
+
+.label-item{
+	text-align:left;
+	width:130px;
+	height: 23px;
+	padding-left:10px;
+	font-size:10px;
+	/*background: rgba(61,52,95,1);*/
+	border:1px solid rgba(255,255,255,.2);
+	color:white;
+}
+
+
+

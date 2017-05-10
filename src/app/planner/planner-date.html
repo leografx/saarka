@@ -1,0 +1,73 @@
+<div class="row">
+	<div class="col-md-12 table-cal">
+		<table class="table">
+				<tr>
+					<td class="fixed">
+						<tr>
+							<td></td>
+						</tr>
+
+						<tr><td></td></tr>
+						
+						<tr class="aqua">
+							<td>
+								<div class="annie-label">Scheduled</div>
+							</td>
+						</tr>
+						
+						<tr class="purple">
+							<td><div class="annie-label">Committed</div></td>
+						</tr>
+						
+						<tr class="blue" style="color:white;">
+							<td><div class="annie-label">Planned</div></td>
+						</tr>
+						
+						<tr class="red" style="color:white;">
+							<td><div class="annie-label">Balance</div></td>
+						</tr>
+					</td>
+
+					<td><tr><td><div  class="box-padding"></div></td></tr></td>
+
+
+					<td [style.border]="committedHighlight(cal.committed,'border')" 
+						[style.background-color]="committedHighlight(cal.committed,'bg')"
+						class="text-center" 
+						*ngFor="let cal of calendar">
+						<tr><td></td></tr>
+						<tr style="background:rgba(255,255,255,.5)">
+							<td><div class="box">{{ cal.date | date:'M/d' }}</div></td>
+						</tr>
+						<tr>
+							<td style="background:rgba(0, 206, 175, .1);">
+								<span *ngIf="cal.scheduled !==0">{{ cal.scheduled }}</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="purple-light">
+								<span *ngIf="cal.committed !==0">{{ cal.committed }}</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="blue-light">
+								<span (click)="scheduleModal='true'" *ngIf="cal.planned !==0">
+									<schedule-modal [date]="cal.date" [linkLabel]="cal.planned |number:'1.1-2'" [item]="{planned:cal.planned,product:product}"></schedule-modal>
+								</span>
+							</td>
+						</tr>
+						<tr class="red-light">
+							<td [style.color]="highLight(cal.balance)">
+								<span>{{ cal.balance |number:'1.1-2'}}</span>
+							</td>
+						</tr>
+					</td>
+				</tr>
+		</table>
+	</div>
+</div>
+
+<span style="color:rgba(0, 153, 151, 1);">
+	<schedule-modal [date]="today" [linkLabel]="'Add Schedule'" [item]="{planned:1,product:product}"></schedule-modal>
+</span>
+

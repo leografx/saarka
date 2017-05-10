@@ -1,0 +1,63 @@
+
+<div class="container-fluid">
+	
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Material Inventory</h2>
+			<input class="form-control" type="text" [(ngModel)]="materialFilter" />
+			<p></p>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-3">
+			Name
+		</div>
+		<div class="col-md-2">
+			Quantity
+		</div>
+		<div class="col-md-2">
+			Size
+		</div>
+		<div class="col-md-2">
+			Weight
+		</div>
+		<div class="col-md-1">
+			UOM
+		</div>
+		<div class="col-md-2">
+			Location
+		</div>
+	</div>
+	<div class="row" *ngFor="let material of materials |filter:materialFilter">
+			<div class="col-md-3 form-group">
+				<label class="sr-only" for="">label</label>
+				<input type="text" [(ngModel)]="material.name" name="name" class="form-control" id="" (keyup)="update(material)" placeholder="Name">
+			</div>
+			<div class="col-md-2 form-group">
+				<label class="sr-only" for="">label</label>
+				<input type="text" [(ngModel)]="material.inventory_quantity" name="inventory_quantity" class="form-control" id="" (keyup)="update(material)" placeholder="Quantity">
+			</div>
+			<div class="col-md-2 form-group">
+				<label class="sr-only" for="">label</label>
+				<input type="text" [(ngModel)]="material.inventory_size" name="inventory_size" class="form-control" id="" (keyup)="update(material)" placeholder="Size">
+			</div>
+			<div class="col-md-2 form-group">
+				<label class="sr-only" for="">label</label>
+				<input type="text" [(ngModel)]="material.inventory_weight" name="inventory_weight" class="form-control" id="" (keyup)="update(material)" placeholder="Weight">
+			</div>
+			<div class="col-md-1 form-group">
+				<label class="sr-only" for="">label</label>
+				<input type="text" [(ngModel)]="material.inventory_weight_unit" name="inventory_weight_unit" class="form-control" id="" (keyup)="update(material)" placeholder="UOM">
+			</div>
+			<div class="col-md-2 form-group">
+				<label class="sr-only" for="">label</label>
+				<input type="text" [(ngModel)]="material.inventory_location" name="inventory_location" class="form-control" id="" (keyup)="update(material)" placeholder="Location">
+			</div>
+	</div>
+</div>
+
+<pre>
+	{{ materials |json }}
+</pre>

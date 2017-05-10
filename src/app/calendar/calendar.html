@@ -1,0 +1,134 @@
+<div class="row">
+	<h3 (click)="calendarGenerator()" class="col-md-12">{{ item.name }} #{{ item.item_no }}</h3>
+</div>
+
+<div class="row">
+	<p class="col-md-6">{{ item.description }}</p>
+</div>
+
+<div class="row text-center" >
+	<div class="col-md-2 col-xs-2">
+		<div class="form-goup">
+			<label>Par</label>
+			<div>{{ item.par }}</div>
+		</div>
+	</div>
+	<div class="col-md-2 col-xs-2">
+		<div class="form-goup">
+			<label>On Hand</label>
+			<div>{{ item.on_hand }}</div>
+		</div>
+	</div>
+	<div class="col-md-2 col-xs-2">
+		<div class="form-goup">
+			<label>QA hold</label>
+			<div>{{ item.qa_hold }}</div>
+		</div>
+	</div>
+	<div class="col-md-2 col-xs-2 ">
+		<div class="form-goup">
+			<label>Available</label>
+			<div>{{ item.available }}</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<a class="btn btn-link" 
+			(click)="calendarGenerator()">
+			<span class="fa fa-backward"></span> &nbsp;
+			{{ previous |date:'MMM y' }}
+		</a>
+	</div>
+	<div class="col-md-4">
+	</div>
+
+	<div class="col-md-4 text-right">
+		<a class="btn btn-link" (click)="calendarGenerator()">{{ next |date:'MMM y' }} &nbsp;
+			<span class="fa fa-forward"></span>
+		</a>
+	</div>
+</div>
+
+
+<table class="box">
+	<tr>
+		<td height="44"></td>
+	</tr>
+	<tr>
+		<td  style="background:rgba(60, 153, 0,1);"
+			class="label-item">
+
+			<span> &nbsp; Scheduled </span>
+
+			<span *ngIf="!toggleIn" 
+	          class="fa fa-toggle-on menu-toggle"  
+	          (click)="toggleIn=!toggleIn;showIn=!showIn"> 
+	        </span>
+	    
+	        <span *ngIf="toggleIn" 
+	          class="fa fa-toggle-off menu-toggle"  
+	          (click)="toggleIn=!toggleIn;showIn=!showIn"> 
+	        </span>		
+				     		
+		</td>
+	</tr>
+	<tr>
+		<td style="background:rgba(0, 102, 255,1);"
+			class="label-item">
+			<span>&nbsp; Committed</span> 
+				
+			<span *ngIf="!toggleOut" 
+	          class="fa fa-toggle-on menu-toggle"  
+	          (click)="toggleOut=!toggleOut;showOut=!showOut"> 
+	        </span>
+	    
+	        <span *ngIf="toggleOut" 
+	          class="fa fa-toggle-off menu-toggle"  
+	          (click)="toggleOut=!toggleOut;showOut=!showOut"> 
+	        </span>		
+
+		</td>
+	</tr>
+	<tr>
+		<td style="background:rgba(153, 0, 0,1);"
+			class="label-item">
+			<span>&nbsp; Balance</span> 
+			<span *ngIf="!toggleBal" 
+	          class="fa fa-toggle-on menu-toggle"  
+	          (click)="toggleBal=!toggleBal;showBal=!showBal"> 
+	        </span>
+	    
+	        <span *ngIf="toggleBal" 
+	          class="fa fa-toggle-off menu-toggle"  
+	          (click)="toggleBal=!toggleBal;showBal=!showBal"> 
+	        </span>		
+		</td>
+	</tr>
+	<tr>
+		<td style="background:rgb(255, 102, 0);"
+			class="label-item">
+			<span>&nbsp; Planned </span> 
+			<span class="fa fa-toggle-on menu-toggle"></span> 
+		</td>
+	</tr>
+	<tr><td height="135"></td></tr>
+</table>
+
+<div class="row graph-container" *ngIf="toggleView">
+	<div class="col-md-12">
+		<table class="calendar-table">
+			<tr class="calendar-inputs">
+				<td *ngFor="let cal of calendar">
+					<calendar-input 
+						[showOut]="showOut" 
+						[showIn]="showIn" 
+						[showBal]="showBal" 
+						[calendar]="cal">		
+					</calendar-input>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

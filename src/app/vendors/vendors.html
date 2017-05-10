@@ -1,0 +1,67 @@
+<new-vendor-modal 
+	[vendorSelected]="vendorSelected" 
+	[newVendor]="vendorModel">	
+</new-vendor-modal>
+<div class="container-fluid" (scroll)="blurIt=!blurIt" [ngClass]="{'blur':blurIt}">
+	<h1 (click)="stringify($event)"> Vendors </h1>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Vendors</label>
+				<input (focus)="$event.target.select();vendorSelected='';isOn=[];" type="text" [(ngModel)]="vendorModel" class="form-control">
+			</div>
+		</div>
+	</div>	
+				
+	<div class="list-group">
+	  	<a href="#" (click)="$event.preventDefault();selected(vendor,$event);"
+			class="list-group-item {{ isOn[i] }}"
+	  		*ngFor="let vendor of vendors |filter:vendorModel;let i=index; ">
+			<div class="row">	
+				<div class="col-md-9"><h4>{{ vendor.name }}</h4></div>	
+	  			
+	  			<div class="col-md-3"><small>ACC#:</small> <strong>{{ vendor.account_no }}</strong></div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4 col-xs-12">
+							<label class="small-label">ADDRESS: </label>
+							{{ vendor.address }}
+						</div>
+						<div class="col-md-4 col-xs-5">
+							<label class="small-label">CITY: </label>
+							 {{ vendor.city }} 
+						</div>
+						<div class="col-md-2 col-xs-3">
+							<label class="small-label">STATE: </label>
+							{{ vendor.state }} 
+						</div>
+						<div class="col-md-2 col-xs-4">
+							<label class="small-label">Zip: </label>
+							 {{ vendor.zipcode }} 
+						</div>
+					</div>
+				</div>
+			</div>
+	  		<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+		  				<div class="col-md-4 col-xs-12">
+		  					<label class="small-label">CONTACT: </label>
+		  					{{ vendor.contact }}
+		  				</div>
+		  				<div class="col-md-3 col-xs-6">
+		  					<label class="small-label">PHONE: </label>
+		  					{{ vendor.phone }}
+		  				</div>
+		  				<div class="col-md-3 col-xs-6">
+		  					<label class="small-label">FAX: </label>
+		  					{{ vendor.fax }}
+		  				</div>
+	  				</div>
+	  			</div>
+			</div>	
+	  	</a>
+	</div>
+</div>
