@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/scan';
 
 import { ICalendar, Calendar } from '../calendar/app.calendar.interface';
 import { ApiService } from '../services/api.service';
@@ -110,15 +111,36 @@ export class PlannerComponent{
 					this.calendar.push( new Calendar( this.initDate.add(1,"day").format() , 0 , 0 , 0 , 0 ) );
 
 				}
-				this.populateCalendarWithData()
+				this.populateCalendarWithData();
 				this.accumulatorResetBalance();	
-				this.balanceByDate()		
+				this.balanceByDate();
+				this.reBalancePlanned();
+				this.balanceTotal();	
 			});
 
 	}
 
 	accumulatorResetBalance(){
 		this.accumulatorBalance = 0.00;
+	}
+
+	reBalancePlanned(){
+		this.calendar.map( (data,i,obj ) => { 
+			if( data.scheduled){
+				data.planned = 0.00;			
+			}
+		});
+	}
+	
+	balanceTotal(){
+		let balance = parseFloat(this.product.on_hand.toString());
+		this.calendar
+		.map(data => {
+			balance += parseFloat(data.scheduled) || 0.00
+			balance += parseFloat(data.planned) || 0.00
+			balance -= parseFloat(data.committed) || 0.00
+			data.balance = balance;
+		});
 	}
 
 	balanceByDate(){
