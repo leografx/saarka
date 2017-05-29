@@ -3,3 +3,13 @@
 	margin:10px auto;
 
 }
+
+.logo-img {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  background-color: transparent;
+  top: 25vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

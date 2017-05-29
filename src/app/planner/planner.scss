@@ -33,10 +33,40 @@ $redLight:rgba(156, 0, 102, .1);
 .red-light{
 	background-color: $redLight;
 }
+.box-container{
+	margin-left: 115px;
+   	width:90%;
+	height:165px;
+	overflow:scroll;
+	white-space: nowrap;
+	position:absolute;
+}
+.box-label{
+	width:100px;
+}
 
 .box{
-	width:50px;
+	width:75px;
+	height: 150px;
 	font-weight:bold;
+	display: inline-block;	
+}
+
+.cell{
+	min-height: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-right: 1px solid silver;
+}
+
+.cell-label{
+	min-height: 30px;
+	height: 30px;
+	line-height: 30px;
+	padding:0px 8px;
+}
+.cell-bottom{
+	border-bottom: 1px solid silver;
 }
 
 .box-padding{
@@ -48,7 +78,7 @@ $redLight:rgba(156, 0, 102, .1);
 }
 
 .table>tbody>tr>td{
-	padding:0px 1px 0px 0px;
+	 padding:0px 1px 0px 0px; 
 }
 
 td{
@@ -59,3 +89,100 @@ td{
 	display:inline-block;
 	text-align: center;
 }
+
+.label-center{
+	vertical-align: text-bottom;
+}
+
+.active{
+	background:none;
+	background-color:none;
+}
+
+.order-table{
+	padding:15px;
+}
+.calendar-settings{
+	padding-top: 20px;
+}
+.tab-pane{
+	min-height:500px;
+}
+
+.badge{
+	color: rgb(69,58,113);
+	background-color: rgba(135,226,209,.2);
+	padding:7px;
+}
+
+.label-center{
+	width:90%;
+	height:30px;
+	font-size:17px;
+	position: absolute;
+	line-height:23px;
+	rigth:0px;
+	top:20px;
+}
+.badge{
+	position:absolute;
+	right:15px;
+}
+.calendar-container{
+	width:100%;
+	height:150px;
+	over-flow:scroll;
+}
+.calendar-settings{
+	margin-left:10px;
+}
+.btn-link{
+	text-decoration: none;
+}
+/* Planner */
+.active{
+	background:none;
+	background-color:none;
+}
+
+.order-table{
+	padding:15px;
+}
+.calendar-settings{
+	padding-top: 20px;
+}
+.tab-pane{
+	min-height:500px;
+}
+
+.badge{
+	color: rgb(69,58,113);
+	background-color: rgba(135,226,209,.2);
+	padding:7px;
+}
+
+.label-center{
+	width:90%;
+	height:30px;
+	font-size:17px;
+	position: absolute;
+	line-height:23px;
+	rigth:0px;
+	top:20px;
+}
+.badge{
+	position:absolute;
+	right:15px;
+}
+.calendar-container{
+	width:100%;
+	height:150px;
+	over-flow:scroll;
+}
+.calendar-settings{
+	margin-left:10px;
+}
+.btn-link{
+	text-decoration: none;
+}
+

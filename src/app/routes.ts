@@ -7,7 +7,9 @@ import { ProductionComponent } from "./production/app.production.component";
 import { MaterialsComponent } from "./materials/app.materials.component";
 import { VendorsComponent } from "./vendors/app.vendors.component";
 import { PlannerComponent } from "./planner/app.planner.component";
-import { FormulasComponent } from "./formulas/app.formulas.component";
+import { FormulasComponent } from "./formulas/app.formulas.formulas-component";
+import { FormulaPostComponent } from "./formulas/app.formulas.formula-post-component";
+import { FormulaEditComponent } from "./formulas/app.formulas.formula-edit-component";
 import { PurchasingComponent } from "./purchasing/app.purchasing.component";
 import { PurchasingReportComponent } from "./purchasing/app.purchasing-report.component";
 import { ProductComponent } from "./products/app.products.component";
@@ -22,6 +24,7 @@ import { LogoutComponent } from './users/app.users.logout.component';
 import { UserListComponent } from './users/app.users.user-list-component';
 import { ProductInventoryComponent } from './products/app.products.inventory-component';
 import { MaterialInventoryComponent } from './materials/app.materials.inventory-component';
+import { ForecasterComponent } from './forecast/app.forecast.forecaster-component';
 export const routes = RouterModule.forRoot(
 	[
 		{
@@ -67,6 +70,11 @@ export const routes = RouterModule.forRoot(
 		  canActivate:[Auth]
 		},
 		{
+		  path:'forecaster',
+		  component:ForecasterComponent,
+		  canActivate:[Auth]
+		},
+		{
 		  path:'planner',
 		  component:PlannerComponent,
 		  canActivate:[Auth]
@@ -79,6 +87,16 @@ export const routes = RouterModule.forRoot(
 		{
 		  path:'formulas',
 		  component:FormulasComponent,
+		  canActivate:[Auth]
+		},
+		{
+		  path:'formula-post',
+		  component:FormulaPostComponent,
+		  canActivate:[Auth]
+		},
+		{
+		  path:'formula-edit/:id',
+		  component:FormulaEditComponent,
 		  canActivate:[Auth]
 		},
 		{
@@ -127,17 +145,17 @@ export const routes = RouterModule.forRoot(
 		  	canActivate:[Auth]
 		},
 		{
+			path:'logout',
+		  	component:LogoutComponent
+		},
+		{
 			path:'login',
 		  	component:UserLoginComponent
 		},
 		{
-			path:'logout',
-		  	component:LogoutComponent
+		path: '**',
+		component:PageNotFoundComponent 
+		}
 
-		},
-		// {
-		// path: '**',
-		// component:PageNotFoundComponent 
-		// }
 	]
 );

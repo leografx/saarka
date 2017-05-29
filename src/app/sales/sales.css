@@ -14,3 +14,13 @@
 	font-size: .5em;
 }
 
+.ship-date{
+	width:15%;
+	display:inline-block;
+}
+
+.inline{
+	width:25%;
+	display:inline-block;
+}
+

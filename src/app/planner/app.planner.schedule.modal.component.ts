@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter} from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import * as moment from 'moment';
@@ -7,18 +8,20 @@ import * as moment from 'moment';
   selector:'schedule-modal',
   templateUrl:'schedule-modal.html',
   styleUrls:['schedule.scss'],
-  inputs:['linkLabel','item','date']
+  inputs:['linkLabel','item','date'],
+  outputs:["updateScheduled"],
+  providers:[DatePipe]
 })
 
 export class ScheduleModalComponent{
-  	
+    updateScheduled:EventEmitter<any> = new EventEmitter;
   	quantity;
   	linkLabel;
   	item;
   	date;
     scheduleModal;
 
-	constructor( private apiService : ApiService, private router : Router ){}
+	constructor( private apiService : ApiService, private router : Router, private datePipe:DatePipe ){}
 
   save(){
     let data = {};
@@ -28,12 +31,15 @@ export class ScheduleModalComponent{
     data['item_no'] = this.item.product.item_no;
     data['name'] = this.item.product.name;
     this.apiService.saveSchedule(data).subscribe();
-    this.router.navigate(['/planner']);
+    this.updateScheduled.emit(this.item.product);
+    //this.router.navigate(['/planner']);
     //console.log(data);
   }
 
 	scheduleDate( date , quantity ){
-
+    let newDate = this.datePipe.transform(date, 'yyyy-MM-dd');
+    console.log(newDate);
+    this.date = newDate.toString();
 	}
 
 }

@@ -1,0 +1,49 @@
+<div class="container-fluid annies-paper">
+	<div class="row-fluid">		
+		<h2>Forecaster</h2>
+	</div>
+	<div class="row-fluid">
+		<products (selectedProduct)=selectedProduct($event)></products>	
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2><span></span>{{ product.name }}</h2>
+		</div>
+	</div>
+	<div *ngIf="product.name" class="row-fluid text-center col-md-12">	
+		<div *ngFor="let month of months" class="col-md-1">
+			<p>	{{ month.title }}<br>
+				<strong>{{month.quantity}}</strong>
+			</p>
+		</div>
+	</div>
+	<div class="row" *ngIf="product.name">
+		<div class="col-md-2 col-xs-12">
+			<div class="form-group">
+				<span class="label label-primary">Par</span>
+				<input class="form-control" type="text" [(ngModel)] ="product.par" placeholder="0" />
+			</div>
+		</div>
+		<div class="col-md-2 col-xs-12">
+			<div class="form-group">
+				<span class="label label-primary">Available</span>
+				<input disabled class="form-control" type="text" [(ngModel)] ="product.available" placeholder="0" />
+			</div>
+		</div>
+		<div class="col-md-2 col-xs-12">
+			<div class="form-group">
+				<span class="label label-primary">Qa Hold</span>
+				<input disabled class="form-control" type="text" [(ngModel)] ="product.qa_hold" placeholder="0" />
+			</div>
+		</div>
+		<div class="col-md-2 col-xs-12">
+		<span class="label label-primary">&nbsp;</span>
+			<button (click)="submit(product.id,product.par)" *ngIf="oldAmount!=product.par" type="button" class="btn btn-primary">Update from {{ oldAmount }} to {{ product.par }}</button>
+		</div>	
+	</div>
+
+	<div class="row-fluid">
+		<canvas forecast #forecast></canvas>	
+	</div>
+</div>
+

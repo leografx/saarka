@@ -1,4 +1,12 @@
 .alert-low{
-	background-color: red;
-	color:white;
+	background-color: #f2dede;
+	color:#a94442;
+}
+
+.list-group-item{
+	min-height: 85px;
+}
+
+.btn-link{
+	text-decoration: none;
 }

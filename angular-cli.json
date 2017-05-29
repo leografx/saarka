@@ -21,10 +21,12 @@
         "assets/font-awesome-4.7.0/css/font-awesome.min.css",
         "assets/simple-side-bar/simple-sidebar.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/sweetalert2/dist/sweetalert2.css",
         "styles.css"
       ],
       "scripts": [
-        "assets/js/custom.js"
+        "assets/js/custom.js",
+        "../node_modules/jquery/dist/jquery.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

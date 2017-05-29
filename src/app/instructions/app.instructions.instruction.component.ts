@@ -3,7 +3,7 @@ import { Component, EventEmitter } from '@angular/core';
 @Component({
 	selector:'instruction',
 	templateUrl:'instruction.html',
-	inputs:['step_no','isLast'],
+	inputs:['step_no','isLast','step'],
 	outputs:['addStep','deleteStep','updateStep']
 })
 

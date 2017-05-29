@@ -13,6 +13,19 @@
 	height:400px;
 }
 
+.align-bottom a{
+	position: relative;
+	top:30px;	
+}
+
+.bottom20{
+	margin-bottom: 20px;
+}
+
+.btn-link{
+	text-decoration: none;
+}
+
 
 
 

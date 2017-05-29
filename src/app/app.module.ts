@@ -15,7 +15,10 @@ import { VendorsComponent } from "./vendors/app.vendors.component";
 import { ProductionComponent } from "./production/app.production.component";
 import { PlannerComponent } from "./planner/app.planner.component";
 import { PlannerDateComponent } from "./planner/app.planner.date.component";
-import { FormulasComponent } from "./formulas/app.formulas.component";
+import { FormulasComponent } from "./formulas/app.formulas.formulas-component";
+import { FormulaFormComponent } from "./formulas/app.formulas.formula-form-component";
+import { FormulaEditComponent } from "./formulas/app.formulas.formula-edit-component";
+import { FormulaPostComponent } from "./formulas/app.formulas.formula-post-component";
 import { PurchasingComponent } from "./purchasing/app.purchasing.component";
 import { PurchasingReportComponent } from "./purchasing/app.purchasing-report.component";
 import { FilterPipe } from './pipes/filter.pipes';
@@ -24,6 +27,8 @@ import { MoldComponent } from './molds/app.molds.mold.component';
 import { InstructionComponent } from "./instructions/app.instructions.instruction.component";
 import { UserListComponent } from './users/app.users.user-list-component';
 import { ProductInventoryComponent } from './products/app.products.inventory-component';
+import { ForecastComponent } from './forecast/app.forecast.forecast-component';
+import { ForecasterComponent } from './forecast/app.forecast.forecaster-component';
 
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { TabsModule } from 'ng2-bootstrap/tabs';
@@ -50,6 +55,7 @@ import { Auth } from './users/authorization';
 import { UserLoginComponent } from './users/app.users.user-login-component';
 import { LogoutComponent } from './users/app.users.logout.component';
 import { AuthService } from './services/app.services.auth.service';
+import { LoaderComponent } from './app.loader-component';
 
 @NgModule({
   declarations: [
@@ -64,6 +70,9 @@ import { AuthService } from './services/app.services.auth.service';
     ProductionComponent,
     PlannerComponent,
     FormulasComponent,
+    FormulaFormComponent,
+    FormulaEditComponent,
+    FormulaPostComponent,
     PurchasingComponent,
     PurchasingReportComponent,
     FilterPipe,
@@ -90,7 +99,10 @@ import { AuthService } from './services/app.services.auth.service';
     LogoutComponent,
     UserListComponent,
     ProductInventoryComponent,
-    MaterialInventoryComponent
+    MaterialInventoryComponent,
+    ForecastComponent,
+    ForecasterComponent,
+    LoaderComponent
   ],
   imports: [
     routes,

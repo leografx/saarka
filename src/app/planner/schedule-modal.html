@@ -20,20 +20,20 @@
         <div class="row">
          <div class="col-md-offset-5 col-md-2 form-group">
            <label>Quantity</label>
-           <input type="text" class="form-control text-center"  [(ngModel)]="item.planned">
+           <input type="text" class="form-control text-center"  [(ngModel)]="item.planned" >
          </div>
 
           <div class="col-md-offset-5 col-md-2 form-group">
            <label>Schedule Date</label>
-           <input type="text" class="form-control text-center" [(ngModel)]="date" />
+           <input type="text" class="form-control text-center" [value]="date|date :'MM/dd/yyyy'"/>
          </div>
          <div class="row">
            <div class="col-md-4 col-md-offset-4">
               <datepicker 
                 onlyCurrentMonth="true"
                 [showWeeks]="false" 
-                [(ngModel)]="date" 
-                (selectionDone)="scheduleDate(item.date,item.planned)"
+                [(ngModel)]="date"
+                (selectionDone)="scheduleDate(date,item.planned)"
                 ></datepicker>   
            </div>
          </div>
@@ -41,7 +41,7 @@
         <div class="row form-group">
           <div class="col-md-12 text-right">
             <button type="button" class="btn btn-danger" (click)="scheduleModal.hide()">Cancel</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+            <button type="button" class="btn btn-primary" (click)="save();scheduleModal.hide()">Save</button>
           </div>
         </div>
       

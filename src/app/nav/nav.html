@@ -4,8 +4,22 @@
     <ul class="sidebar-nav">
         <li>
             <div  class="branding">
-                <img class="logo img-responsive hidden-print" [src]="'assets/images/logo.png'"/>
+                <div class="logo img-responsive hidden-print"></div>
             </div>
+        </li>
+
+        <li>
+            <a> <span class="fa fa-planner"></span> Planning
+                <span class="caret"></span>
+            </a>
+              <ul class="nav">
+                <li>
+                    <a routerLinkActive="active" routerLink="/planner"> <span class="fa fa-calendar"></span> Planner</a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/forecaster"> <span class="fa fa-line-chart"></span> Forecaster </a>
+                </li>
+            </ul>  
         </li>
         <li>
             <a routerLinkActive="active" routerLink="/customers">Customers</a>
@@ -50,10 +64,6 @@
                 </li>
                 <li>
                     <a routerLinkActive="active" routerLink="/build-ticket" href="#"> <span class="fa fa-ticket"></span> Build Ticket</a>
-                </li>
-
-                <li>
-                    <a routerLinkActive="active" routerLink="/planner"> <span class="fa fa-calendar"></span> Planner</a>
                 </li>
             </ul>
         </li>

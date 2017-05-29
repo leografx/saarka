@@ -1,0 +1,90 @@
+	{
+  "id_code": "304002",
+  "name": "Chocolate Cake",
+  "revision_no": "4-1-17",
+  "materials": [
+    {
+      "id": "89",
+      "item_no": "RM1003",
+      "name": "Double Dutch Rich Cream Cake",
+      "weight": "100",
+      "weight_unit": null,
+      "size": "BAG",
+      "lbs": "50",
+      "manufacture": "R&H",
+      "inventory_quantity": null,
+      "inventory_weight": null,
+      "inventory_size": null,
+      "inventory_weight_unit": null,
+      "inventory_location": null
+    },
+    {
+      "id": "121",
+      "item_no": "DY2010",
+      "name": "Eggs Whole w/out citric acid",
+      "weight": "35",
+      "weight_unit": null,
+      "size": "CASE",
+      "lbs": "30",
+      "manufacture": "",
+      "inventory_quantity": null,
+      "inventory_weight": null,
+      "inventory_size": null,
+      "inventory_weight_unit": null,
+      "inventory_location": null
+    },
+    {
+      "id": "39",
+      "item_no": "OF9001",
+      "name": "Soybean Oil",
+      "weight": "30",
+      "weight_unit": null,
+      "size": "CASE",
+      "lbs": "35",
+      "manufacture": "BUNGE",
+      "inventory_quantity": null,
+      "inventory_weight": null,
+      "inventory_size": null,
+      "inventory_weight_unit": null,
+      "inventory_location": null
+    },
+    {
+      "name": "Water",
+      "item_no": "H2O",
+      "size": "",
+      "weight": "22.5"
+    },
+    {
+      "name": "Pan Spray 14 oz Wesson",
+      "item_no": "",
+      "size": "",
+      "weight": ".5"
+    }
+  ],
+  "instructions": [
+    {
+      "step": "Mix Double Dutch Rich Cream Cake Base and whole eggs for 1 minute on speed 1; then 3 minutes on speed 2",
+      "step_no": 1
+    },
+    {
+      "step": "Add oil and water mix one minute on speed 1",
+      "step_no": 2
+    },
+    {
+      "step": "Scrape down mixture and mix for 2 minutes on speed 1",
+      "step_no": 3
+    },
+    {
+      "step": "Grease pipes with pan spray and deposit 5 oz of batter",
+      "step_no": 4
+    },
+    {
+      "step": "Bake at 340 degrees for 30 minutes",
+      "step_no": 5
+    },
+    {
+      "step": "Remove from Pan after cool down to 180 degrees and store in Freezer",
+      "step_no": 6
+    }
+  ]
+}
