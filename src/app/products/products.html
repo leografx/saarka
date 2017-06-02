@@ -39,10 +39,11 @@
 	</div>	
 				
 	<div class="list-group" *ngIf="showProducts">
-	  	<a href="#" (click)="$event.preventDefault();selected(product);showProducts=false"
+	  	<a href="#" (click)="$event.preventDefault();selected(product);productOrderSelected(product);showProducts=false"
 			class="col-md-3  list-group-item {{ isOn[i] }}"
 			[ngClass]="{'alert-low':product.on_hand < 10}"
 	  		*ngFor="let product of products | filter:productModel; index as i;">
+	  			<span class="badge">{{ product.available|number:'1.2-2' }}</span>
 	  			<strong>{{ product.item_no }} </strong>
 	  			<br>	{{ product.name }}
 	  	</a>

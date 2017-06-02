@@ -50,6 +50,12 @@ body{
 	font-family: 'open_sanslight', sans-serif;
 }
 
+footer{
+	width:100%;
+	height: 300px;
+	/*background-color: yellow;*/
+}
+
 .login-window {
   position: absolute;
   height: 400px;
@@ -87,7 +93,13 @@ body{
 	margin-top: 50px;
 	background-color: rgba(255, 250, 250, .9);
 	box-shadow: 3px 3px 20px rgba(0, 206, 175, .5);
-
+}
+.annies-paper footer{
+	content: "© 2017 Annie's Euro American Bakery | Developed by grafx2print.com";
+	height:100px;
+	width:100%;
+	line-height: 100px;
+	text-align: center;
 }
 .annies-paper table th{
 	text-align: center;
@@ -228,7 +240,7 @@ h1{
 	box-shadow: 3px 3px 25px rgba(0, 206, 175, .3);
 }
 
-.annies-primary{
+.annies-primary,.label-default{
 	background-color: rgba(0, 206, 175, 1)
 }
 

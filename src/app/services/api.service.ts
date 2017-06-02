@@ -92,6 +92,23 @@ export class ApiService {
      return this.http.get(url).map(this.extractData).catch(this.handleError); 
       
   }
+  getOrderWithId(id){
+   let url = this.url+`api/get_order_with_id/${id}`;
+    return this.http.get(url).map(this.extractData).catch(this.handleError);
+  }
+
+  updateOrderWithId(sales){
+    let postData = JSON.stringify(sales);
+    let url  = this.url+'api/update_order_with_id';
+    return this.http.post(url,postData).catch(this.handleError);
+  }
+
+  saveOrder(sales){
+    let postData = JSON.stringify(sales);
+    let url  = this.url+'api/save_order';
+    return this.http.post(url,postData).catch(this.handleError);
+  }
+
   getProductWithId(id){
     let postData = JSON.stringify(id);
     let url  = this.url+'api/get_product_with_id';

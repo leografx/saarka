@@ -1,19 +1,22 @@
-<div class="row login-window">	
-	<div class="col-md-12">
-		<p *ngIf="error" class="text-danger well well-danger">{{error}}</p>
-		<div class="form-group">
-			<span class="label label-primary">User</span>
-			<input class="form-control" type="text" [(ngModel)]="user" name="user" placeholder="Email" />
-		</div>
-	</div>
+<form>
+	<div class="row login-window">	
 
-	<div class="col-md-12">
-		<div class="form-group">
-			<span class="label label-primary">Password</span>
-			<input class="form-control" type="password" [(ngModel)] ="password" placeholder="Password" />
+		<div class="col-md-12">
+			<p *ngIf="error" class="text-danger well well-danger">{{error}}</p>
+			<div class="form-group">
+				<span class="label label-primary">User</span>
+				<input class="form-control" type="text" [(ngModel)]="user" [ngModelOptions]="{standalone:true}" placeholder="Email" />
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<span class="label label-primary">Password</span>
+				<input class="form-control" type="password" [(ngModel)] ="password" placeholder="Password" [ngModelOptions]="{standalone:true}"/>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<button  (click)="submit()" class="btn btn-primary">Submit</button>
 		</div>
 	</div>
-	<div class="col-md-12">
-		<button  (click)="submit()" class="btn btn-primary">Submit</button>
-	</div>
-</div>
+</form>

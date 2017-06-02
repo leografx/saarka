@@ -25,6 +25,8 @@ import { UserListComponent } from './users/app.users.user-list-component';
 import { ProductInventoryComponent } from './products/app.products.inventory-component';
 import { MaterialInventoryComponent } from './materials/app.materials.inventory-component';
 import { ForecasterComponent } from './forecast/app.forecast.forecaster-component';
+import { SalesOrderEditComponent } from './sales/app.sales.order-edit.component';
+
 export const routes = RouterModule.forRoot(
 	[
 		{
@@ -33,10 +35,21 @@ export const routes = RouterModule.forRoot(
 		  canActivate:[Auth]
 		},
 
+		// {
+		//   path:'sales-orders',
+		//   component:SalesOrdersComponent,
+		//   canActivate:[Auth]
+		// },
 		{
-		  path:'sales-orders',
-		  component:SalesOrdersComponent,
-		  canActivate:[Auth]
+		  path:'sales-order',
+		  component:SalesOrderEditComponent,
+		  // canActivate:[Auth]
+		},
+
+		{
+		  path:'sales-order/:id',
+		  component:SalesOrderEditComponent,
+		  // canActivate:[Auth]
 		},
 
 		{

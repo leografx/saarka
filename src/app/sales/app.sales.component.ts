@@ -10,12 +10,15 @@ import { ApiService } from '../services/api.service';
 })
 
 export class SalesComponent implements OnInit{
-	orders = [];
+	orders;
 	filter='';
 	
 	constructor( private apiService:ApiService ){}
 
 	ngOnInit(){
-		this.apiService.getPendingOrders().subscribe(data => this.orders = data);
+		console.log('...Sales Order List Init');
+		this.apiService.getPendingOrders().subscribe(data => this.orders = data,
+			error => console.log(error), 
+			()=> console.log(this) );
 	}
 }

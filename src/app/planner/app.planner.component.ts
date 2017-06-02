@@ -59,9 +59,9 @@ export class PlannerComponent implements OnInit, OnDestroy{
 		this.user = this.authService.getUser();
 		this.apiService.getAll('products').subscribe(data => {
 			this.products = data;
-			console.log('fetching All products...');
+			//console.log('fetching All products...');
 			this.getItems(this.products[0]);
-			this.renderNav(this.products[0]);
+			//this.renderNav(this.products[0]);
 		},
 		(error) => console.log(error),
 		() => console.log('...'));
@@ -69,7 +69,7 @@ export class PlannerComponent implements OnInit, OnDestroy{
 	}
 	
 	ngAfterViewChecked(){
-		setTimeout(()=>this.isLoading=false,1500);
+		setTimeout(()=>this.isLoading=false,300);
 	}
 
 	ngOnDestroy(){
@@ -97,12 +97,11 @@ export class PlannerComponent implements OnInit, OnDestroy{
 		this.product = { id:1, name:'', on_hand:0.0, item_no:'', available:0, qa_hold:0 };
 		this.product = product;
 		
-		console.log('product populated');
+		//console.log('product populated');
 		
 		this.apiService.get_qa_holds(product,'Hold').subscribe( data => { 
-			console.log('...fetching qaHold Data')
+			//console.log('...fetching qaHold Data')
 			this.qaHoldsData = data;
-
 		},
 		(error)=>console.log(error),
 		()=> console.log('...qaHold Data Complete'));
@@ -126,7 +125,7 @@ export class PlannerComponent implements OnInit, OnDestroy{
 					this.calendar.push( new Calendar( this.initDate.add(1,"day").format() , 0 , 0 , 0 , 0 ) );
 				}
 
-				console.log('calendar mounted...');
+				//console.log('calendar mounted...');
 			},
 			error=> {	
 				//error 
@@ -213,15 +212,15 @@ export class PlannerComponent implements OnInit, OnDestroy{
 		this.apiService.getPendingItems().subscribe(data => this.itemOrders = data);
 	}
 
-	nextProductFoward(e){
-		this.renderViewWithNextProduct(e.index);
-	}
+	//nextProductFoward(e){
+		//this.renderViewWithNextProduct(e.index);
+	//}
 
-	prevProductBack(e){
+	//prevProductBack(e){
 		//this.renderViewWithPrevProduct();
-	}
+	//}
 
-	renderViewWithNextProduct(index){
+	//renderViewWithNextProduct(index){
 		// this.nextIndex = index
 		// let product = this.products[index];
 		// if (this.products[this.nextIndex+1]){
@@ -232,9 +231,9 @@ export class PlannerComponent implements OnInit, OnDestroy{
 		// 	this.nextProduct = this.products[this.nextIndex];
 		// }
 		// this.newSheduledEnter(product);
-	}
+	//}
 
-	renderNav(product){
+	//renderNav(product){
 		// let nav = this.products.reduce( (item,current,index) => {
 	 //  		if ( current.id == product.id){
 	 //  			item.push(this.products[index-1]);
@@ -251,7 +250,7 @@ export class PlannerComponent implements OnInit, OnDestroy{
 	 //  	this.getItems(this.product);
 	  	
 	  //console.log(nav[0],nav[1],nav[2]);
-	}
+	//}
 }
 
 

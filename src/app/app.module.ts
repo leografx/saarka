@@ -2,12 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { FooterComponent } from './app.footer';
 import { NavComponent } from './nav/app.nav.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { PageNotFoundComponent } from "./page-not-found/app.page-not-found.component";
 import { SalesComponent } from "./sales/app.sales.component";
 import { SalesOrdersComponent } from "./sales/app.sales-orders.component";
+import { SalesOrderEditComponent } from "./sales/app.sales.order-edit.component";
 import { SalesReportsComponent } from "./sales/app.sales-reports.component";
 import { MaterialsComponent } from "./materials/app.materials.component";
 import { MaterialInventoryComponent } from './materials/app.materials.inventory-component';
@@ -29,6 +31,7 @@ import { UserListComponent } from './users/app.users.user-list-component';
 import { ProductInventoryComponent } from './products/app.products.inventory-component';
 import { ForecastComponent } from './forecast/app.forecast.forecast-component';
 import { ForecasterComponent } from './forecast/app.forecast.forecaster-component';
+import { TypeAheadComponent } from './typeahead/app.typeahead.typeahead-component';
 
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { TabsModule } from 'ng2-bootstrap/tabs';
@@ -56,10 +59,13 @@ import { UserLoginComponent } from './users/app.users.user-login-component';
 import { LogoutComponent } from './users/app.users.logout.component';
 import { AuthService } from './services/app.services.auth.service';
 import { LoaderComponent } from './app.loader-component';
+import { CountPipe } from './pipes/count.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TypeAheadComponent,
+    FooterComponent,
     NavComponent,
     PageNotFoundComponent,
     SalesComponent,
@@ -67,6 +73,7 @@ import { LoaderComponent } from './app.loader-component';
     VendorsComponent,
     SalesOrdersComponent,
     SalesReportsComponent,
+    SalesOrderEditComponent,
     ProductionComponent,
     PlannerComponent,
     FormulasComponent,
@@ -102,7 +109,8 @@ import { LoaderComponent } from './app.loader-component';
     MaterialInventoryComponent,
     ForecastComponent,
     ForecasterComponent,
-    LoaderComponent
+    LoaderComponent,
+    CountPipe
   ],
   imports: [
     routes,

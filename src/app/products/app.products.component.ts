@@ -8,13 +8,14 @@ import 'rxjs/add/operator/map';
 	styleUrls:['products.css'],
 	providers:[ApiService],
 	inputs:['productModel'],
-	outputs:['selectedProduct','nextProduct','listOfProducts']
+	outputs:['selectedProduct','nextProduct','listOfProducts','orderProductSelected']
 })
 
 export class ProductComponent implements OnInit{
 	nextProduct = new EventEmitter<any>()
 	listOfProducts =new EventEmitter<any>()
 	selectedProduct = new EventEmitter<any>()
+	orderProductSelected =  new EventEmitter<any>()
 	products:any;
 	productSelected:any;
 	isOn = [];
@@ -65,5 +66,9 @@ export class ProductComponent implements OnInit{
 
 	btnSelected(btn){
 		this.btn[btn] = true;
+	}
+
+	productOrderSelected(product){
+		this.orderProductSelected.emit(product);
 	}
 }

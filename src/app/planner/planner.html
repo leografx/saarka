@@ -28,7 +28,6 @@
                 <products 
                     [productModel]="product.name"
                     (selectedProduct)="getItems($event)"
-                    (nextProduct)="renderNav($event)"
                     ></products>
             </div>
         </div>
@@ -116,21 +115,20 @@
     </tab>
 
 
-    <!-- /*----------  Items  ----------*/ -->
+    <!-- /*----------  Order Items  ----------*/ -->
     
-    <tab heading="Items" (select)="getPendingItems()">
+    <tab heading="Sales order of item" (select)="getPendingItems()">
         <div class="container-fluid">
+            <h3> <span class="label label-default">{{ product.item_no }}</span> {{ product.name }} Items </h3>
+            <br>
             <div class="list-group">
-                <a *ngFor="let item of items" class="list-group-item">
-                   <div class="row">
-                       <div class="col-md-1">
-                           {{ item.order_id }} 
-                       </div>
-                   </div>
+                <a  [routerLink]="['/sales-order',item.order_id]" *ngFor="let item of items" class="list-group-item">
+                    <span class="badge">{{ item.quantity}}</span>
+                    {{ item.order_ship_date |date:'MM/dd/yyyy' }} {{ item.order_name }}
                 </a>
             </div>
         </div>
-       <pre>{{ items | json }}</pre> 
+     <!--   <pre>{{ items | json }}</pre>  -->
     </tab>
 
     <!-- /*----------  Planned  ----------*/ -->
@@ -147,19 +145,32 @@
     <!-- /*----------  Schedule  ----------*/ -->
     
 
-    <tab heading="Schedule">
-        <div class="order-table row">
+    <tab heading="Schedules">
+        <div class="container-fluid">
+            <h3> <span class="label label-default">{{ product.item_no }}</span> {{ product.name }} Schedules </h3>
+            <br>
+            <div class="list-group">
+              <a class="list-group-item" *ngFor="let schedule of scheduled"> 
+                <span class="badge">{{ schedule.total }}</span>
+                 {{ schedule.date | date:'MM/dd/yyyy' }}
+              </a>
+            </div>
+        </div>
+
+        
+ 
+<!--         <div class="order-table row">
             <div class="col-md-12">
                 <h3>Schedule</h3>
                 <pre> {{ scheduled |json }} </pre>
             </div>
-        </div>
+        </div> -->
+
     </tab>
 
     <tab heading="QA Hold" (select)="qaHolds(product)">
         <div class="container-fluid" *ngIf="qaHoldsData.length>0" >
-            <h2>Quality Assurance Holds</h2>
-            <h3># {{ qaHoldsData[0].product_no }} {{ qaHoldsData[0].product_name }}</h3>
+            <h3><span class="label label-default">{{ product.item_no }}</span> {{ product.name }} Quality Assurance Holds</h3>
             <div class="list-group row-fluid">  
                 <div class="col-md-1"><strong>CASES</strong></div>
                 <div class="col-md-2"><strong>HOLD DATE</strong></div>

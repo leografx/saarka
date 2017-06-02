@@ -17,28 +17,13 @@
 
 	<div class="row-fluid">
 		<div class="list-group">
-			<a class="list-group-item" *ngFor="let order of orders |filter:filter">	
-				<h4 class="list-group-item-heading"> {{ order.name }} </h4>
-					<div class="ship-date">
-						<span class="fa fa-truck"></span> 
-						 {{ order.ship_date }}
-					 </div> 
-					
-					<div class="inline">
-						<span class="fa fa-phone"></span> 
-						<span>{{ order.phone }}</span>
-					</div>
-					
-					<div class="inline">
-						<span class="fa fa-user"></span> 
-						<span>{{ order.contact }}</span>
-					</div>
-
-					<div class="inline">
-						<span class="fa fa-envelope"></span> 
-						<span>{{ order.email }}</span>
-					</div>
-
+			<a [routerLink]="['/sales-order',order.id]" class="list-group-item" *ngFor="let order of orders |filter:filter">	
+				<span class="label label-default">{{ order.id }}</span>
+				 {{ order.name }}
+				<div class="ship-date">
+					<span class="fa fa-truck"></span> 
+					 {{ order.ship_date }}
+				 </div> 
 			</a>
 		</div>
 	</div>
