@@ -1,95 +1,135 @@
-<customer-modal [customerSelected]="customer" [newCustomer]="newCustomerName"></customer-modal>
 <div class="container-fluid annies-paper">
-    <div class="row-fluid">
-        <div class="col-md-12">
-            <h1>Sales Orders</h1>
-            <div class="row">
-                <fieldset class="form-group col-md-5">
-                    <label for="ship-date">Ship Date</label>
-                    <input type="text" (keyup)="shippingUpdate($event)" (focus)="setShowDatepicker(true)" [(ngModel)]="shipping.ship_date" class="form-control" id="ship-date" placeholder="Ship Date">
-                    <datepicker class="datepicker-bg" [(ngModel)]="dt" onlyCurrentMonth="true" *ngIf="showDatepicker" (selectionDone)="setShipDate($event)"></datepicker>
-                </fieldset>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <customer-picker 
-            (customerSelected)="selectedCustomer($event)"
-            (customerInput) = "customerInput($event)"
-            >
-            
-            </customer-picker>
-        </div>
-        <div class="row-fluid"  *ngIf="selectedFromList">
-            <div class="col-md-6">
-                <h2>Bill to</h2>
-                <div (click)="collapseCustomer=!collapseCustomer">
-                    <span *ngIf="collapseCustomer" class="glyphicon glyphicon-collapse-up"></span>
-                    <span *ngIf="!collapseCustomer&&customer.name" class="glyphicon glyphicon-edit"></span>
-                </div>
-                <customer *ngIf="collapseCustomer" (updateCustomer)="customerUpdate($event)" [customer]="customer"></customer>
-                <div class="container" *ngIf="!collapseCustomer">
-                    <h4>{{ customer.name }} </h4>
-                    <address>{{customer.address }}
-                        <br/> {{ customer.city }} {{ customer.state }} {{ customer.zip }}
-                    </address>
-                    {{ customer.phone }} {{ customer.contact }}
-                    <br/> {{ customer.email }}
-                    <br/>
-                    <br/>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h2>Ship to <a *ngIf="customer.name" class="same" (click)="setShipping()">Same as Bill to</a></h2>
-                <div (click)="collapseShipping=!collapseShipping">
-                    <span *ngIf="collapseShipping" class="glyphicon glyphicon-collapse-up"></span>
-                    <span *ngIf="!collapseShipping&&shipping.client" class="glyphicon glyphicon-edit"></span>
-                </div>
-                <shipping 
-        	        *ngIf="collapseShipping" 
-        	        (updateShipping)="shippingUpdate($event)" 
-        	        [shipping]="shipping" 
-        	        [ship_date]="shipping.ship_date">	
-                </shipping>
-                <div class="container" *ngIf="!collapseShipping">
-                    <h4>{{ shipping.client }} </h4>
-                    <address>{{shipping.address }}
-                        <br/> {{ shipping.city }} {{ shipping.state }} {{ shipping.zipcode }}
-                    </address>
-                    {{ shipping.phone }} {{ shipping.attention }}
-                    <br/> {{ shipping.email }}
-                    <br/>
-                    <br/>
-                </div>
-            </div>
-        </div>
-        <div class="row-fluid" *ngIf="selectedFromList">
-            <div class="col-xs-12">
-                <products (selectedProduct)="mySelectedProduct($event)"></products>
-            </div>
-        </div>
-        <div class="row-fluid" *ngIf="items.length>0">
-            <div class="col-md-2 text-center">Quantity</div>
-            <div class="col-md-2 text-center">Production Date</div>
-            <div class="col-md-8 text-center">Description</div>
-            <div class="col-md-12"></div>
-        </div>
-        <div class="row-fluid" *ngFor="let item of items">
-            <fieldset class="form-group col-md-2">
-                <input type="text" class="form-control" [(ngModel)]="item.quantity" id="qt" placeholder="Quantity">
-            </fieldset>
-            <fieldset class="form-group col-md-10">
-                <input type="text" class="form-control" placeholder="item" [value]="item.name">
-                <a (click)="deleteItem(item)" class="btn btn-link fa fa-remove btn-input"></a>
-            </fieldset>
-        </div>
-        <div class="row-fluid">
-            <div class="col-md-12 text-right">
-                <div style="height:400px" class="form-group">
-                    <br/>
-                        <button type="button" class="btn btn-primary" (click)="onSubmit()">Go!</button>
-                </div>
-                <!-- <a class="btn btn-primary" (click)="onSubmit()">Submit</a> -->
-            </div>
-        </div>
-    </div>
+	<h2 *ngIf="!id">New Order</h2>
+	<h2 *ngIf="id">Edit Order</h2>
+	<div class="row">
+
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-xs-12">
+			<div class="row">
+				<div class="col-md-12"><h4>Order by:</h4></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 form-group">
+					<span class="label label-primary">Date</span>
+					<input class="form-control" type="text" (change)="transformDate(order)" [(ngModel)] ="order.date" placeholder="Order Date" />
+				</div>
+			</div>
+			<div class="form-group">
+				<span class="label label-primary">Name </span>
+				<span *ngIf="nameCount==0" (click)="reset()" class="label label-danger text-danger">New Customer</span>
+				<input class="form-control" (keyup)="typeaheadShow()" type="text" (change)="transformName(order)" [(ngModel)] ="order.name" placeholder="Name" />
+				<typeahead [table]="typeahead"  (selectedItem)="typeaheadselectedItem($event)" (filterCount)="filterCount($event)"></typeahead>
+			</div>
+			<div class="row">
+				<div class="col-md-6 form-group">
+					<span class="label label-primary">Email</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.email" placeholder="Email" />
+				</div>
+				<div class="col-md-6 form-group">
+					<span class="label label-primary">Phone</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.phone" placeholder="Phone" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<span class="label label-primary">Address</span>
+				<input class="form-control" type="text" [(ngModel)] ="order.address" placeholder="Address" />
+			</div>
+
+			<div class="row">
+				<div class="col-md-7 form-group">
+					<span class="label label-primary">City</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.city" placeholder="City" />
+				</div>
+				<div class="col-md-3 form-group">
+					<span class="label label-primary">State</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.state" placeholder="State" />
+				</div>
+				<div class="col-md-2 form-group">
+					<span class="label label-primary">Zip</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.zip" placeholder="Zip" />
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<div class="row">
+				<div class="col-md-12"><h4>Ship to:</h4></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 form-group">
+					<span class="label label-primary">Ship Date</span>
+					<input class="form-control" type="text" (change)="transformDate(order)" [(ngModel)] ="order.ship_date" placeholder="Ship Date" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 form-group">
+					<span class="label label-primary">Contact</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.contact" placeholder="Contact" />
+				</div>
+				<div class="col-md-12 form-group">
+					<span class="label label-primary">Address</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.shipping_address" placeholder="Shipping Address" />
+				</div>
+				<div class="col-md-7 form-group">
+					<span class="label label-primary">City</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.shipping_city" placeholder="Shipping City" />
+				</div>
+				<div class="col-md-3 form-group">
+					<span class="label label-primary">State</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.shipping_state" placeholder="Shipping State" />
+				</div>
+				<div class="col-md-2 form-group">
+					<span class="label label-primary">Zip</span>
+					<input class="form-control" type="text" [(ngModel)] ="order.shipping_zip" placeholder="shipping Zip" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-offset-3 col-md-6">
+					<br>
+					<button *ngIf="id" type="button" (click)="updateOrder(order)" class="form-control btn btn-primary">Update order</button>
+					<button *ngIf="!id" type="button" (click)="saveOrder(order)" class="form-control btn btn-primary">Save new order</button>
+				</div>	
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+		<h4>Products</h4>
+			<products (orderProductSelected)="selectedProduct($event)"></products>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<br>
+			<h4>Products Ordered:</h4>
+		</div>
+	</div>
+	<div class="row" *ngFor="let item of items; index as i">
+		<div class="col-md-2 form-group">
+			<span class="label label-primary">Quantity</span>
+			<input class="form-control" type="text" [(ngModel)]="item.quantity" placeholder="Quantity" />
+		</div>
+		<div class="col-md-10 form-group">
+			<span class="label label-primary">Product name</span>
+			<input class="form-control" disabled  type="text" [(ngModel)] ="item.name" placeholder="Product Name" />
+			<span (click)="deleteItem(i)" class="btn btn-link fa fa-times"></span>
+		</div>
+	</div>
+	
+
+<div class="row">
+	<div class="col-md-12">
+		<pre>
+			{{ order | json }}
+		</pre>	
+		<pre>
+			{{ customer | json }}
+		</pre>
+	</div>
+</div>
+
+<footer></footer>
 </div>

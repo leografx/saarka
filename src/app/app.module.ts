@@ -8,8 +8,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { PageNotFoundComponent } from "./page-not-found/app.page-not-found.component";
 import { SalesComponent } from "./sales/app.sales.component";
-import { SalesOrdersComponent } from "./sales/app.sales-orders.component";
-import { SalesOrderEditComponent } from "./sales/app.sales.order-edit.component";
+import { SalesOrdersComponent } from "./sales/app.sales.orders-component";
 import { SalesReportsComponent } from "./sales/app.sales-reports.component";
 import { MaterialsComponent } from "./materials/app.materials.component";
 import { MaterialInventoryComponent } from './materials/app.materials.inventory-component';
@@ -73,7 +72,6 @@ import { CountPipe } from './pipes/count.pipe';
     VendorsComponent,
     SalesOrdersComponent,
     SalesReportsComponent,
-    SalesOrderEditComponent,
     ProductionComponent,
     PlannerComponent,
     FormulasComponent,

@@ -4,8 +4,8 @@ import { ApiService } from '../services/api.service';
 import  * as moment from 'moment';
 
 @Component({
-	selector:'sales-order-edit',
-	templateUrl:'sales-order-edit.html',
+	selector:'sales-order',
+	templateUrl:'sales-orders.html',
 	styles:[`.fa{
 		position:absolute;
 		right:10px;
@@ -15,7 +15,7 @@ import  * as moment from 'moment';
 	providers:[ApiService]
 })
 
-export class SalesOrderEditComponent implements OnInit{
+export class SalesOrdersComponent implements OnInit{
 	typeahead = { name:'customers', field:'name', show : false , filter:'' };
 	id:number;
 	nameCount:number;

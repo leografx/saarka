@@ -1,7 +1,7 @@
 import { RouterModule }   from '@angular/router';
 import { PageNotFoundComponent } from "./page-not-found/app.page-not-found.component";
 import { SalesComponent } from "./sales/app.sales.component";
-import { SalesOrdersComponent } from "./sales/app.sales-orders.component";
+import { SalesOrdersComponent } from "./sales/app.sales.orders-component";
 import { SalesReportsComponent } from "./sales/app.sales-reports.component";
 import { ProductionComponent } from "./production/app.production.component";
 import { MaterialsComponent } from "./materials/app.materials.component";
@@ -25,7 +25,6 @@ import { UserListComponent } from './users/app.users.user-list-component';
 import { ProductInventoryComponent } from './products/app.products.inventory-component';
 import { MaterialInventoryComponent } from './materials/app.materials.inventory-component';
 import { ForecasterComponent } from './forecast/app.forecast.forecaster-component';
-import { SalesOrderEditComponent } from './sales/app.sales.order-edit.component';
 
 export const routes = RouterModule.forRoot(
 	[
@@ -42,14 +41,14 @@ export const routes = RouterModule.forRoot(
 		// },
 		{
 		  path:'sales-order',
-		  component:SalesOrderEditComponent,
+		  component:SalesOrdersComponent,
 		  // canActivate:[Auth]
 		},
 
 		{
 		  path:'sales-order/:id',
-		  component:SalesOrderEditComponent,
-		  // canActivate:[Auth]
+		  component:SalesOrdersComponent,
+		  canActivate:[Auth]
 		},
 
 		{

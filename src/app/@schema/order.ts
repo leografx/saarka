@@ -1,0 +1,19 @@
+export class Order {
+	id?:number;
+	ship_date?:string;
+	name:string;
+	email:string;
+	customer_id:number;
+	contact:string;
+	shipping_address:string;
+	shipping_city:string;
+	shipping_state:string;
+	shipping_zip:string;
+	address:string;
+	city:string;
+	state:string;
+	zip:string;
+	date?:string;
+	phone:string;
+	status:string;
+}
