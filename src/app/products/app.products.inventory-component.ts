@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -7,18 +7,19 @@ import { ApiService } from '../services/api.service';
 	providers:[ApiService]
 })		
 
-export class ProductInventoryComponent implements OnInit{
+export class ProductInventoryComponent implements OnInit, OnDestroy{
 	products;
 	productFilter = '';
 	
 	constructor ( private apiService : ApiService ) {}
 	
 	ngOnInit () {
-		this.apiService.getAll('products').map(products => this.products = products).subscribe()
+		this.products = this.apiService.getAll('products');
 	}
 
-	update(product){
+	ngOnDestroy(){}
 
+	update(product){
 		this.apiService.updateProduct(product).subscribe();
 	}
 }

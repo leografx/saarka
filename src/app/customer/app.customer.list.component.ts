@@ -16,7 +16,7 @@ export class CustomerListComponent implements OnInit{
 	constructor(private apiService:ApiService){}
 
 	ngOnInit(){
-		this.apiService.getAll('customers').subscribe(data => this.customers = data);
+		this.customers = this.apiService.getAll('customers');
 	}
 
 	selected(customer){

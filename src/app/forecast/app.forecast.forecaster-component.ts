@@ -1,10 +1,12 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ForecastComponent } from '../forecast/app.forecast.forecast-component';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/takeWhile';
 import  { alertSuccess, alertError } from '../shared/app.shared.sweet-alert';
 import { default as swal } from 'sweetalert2';
+import { ISubscription } from "rxjs/Subscription";
 
 
 
@@ -14,7 +16,8 @@ import { default as swal } from 'sweetalert2';
 	providers:[ApiService]
 })
 
-export class ForecasterComponent{
+export class ForecasterComponent implements OnDestroy{
+	alive =	true;
 	product;
 	products;
 	forecaster;
@@ -31,6 +34,10 @@ export class ForecasterComponent{
 		this.product={};
 		this.year = new Date().getFullYear();
 	}
+	
+	ngOnDestroy(){
+		this.alive = false;
+	}
 
 	selectedProduct(product){
 		this.product = product;
@@ -41,7 +48,7 @@ export class ForecasterComponent{
 	}
 
 	getForecastData(product,year){
-		this.apiService.getForcast(product,year).subscribe((data)=>this.forecaster = data.json(),(error)=>alertError('Oops No Data available'),()=>this.populateData());
+		this.apiService.getForcast(product,year).takeWhile(() => this.alive).subscribe((data)=>this.forecaster = data.json(),(error)=>alertError('Oops No Data available'),()=>this.populateData());
 	}
 
 	updateForecast(product,chartType){
@@ -50,7 +57,7 @@ export class ForecasterComponent{
 
 	submit(id,amount){
 		this.oldAmount = amount;
-		this.apiService.update_par_from_forecaster(id,amount).subscribe((data)=> data , (error) => this.errorAlert('Oops! try again'), ()=>this.successAlert());
+		this.apiService.update_par_from_forecaster(id,amount).takeWhile(() => this.alive).subscribe((data)=> data , (error) => this.errorAlert('Oops! try again'), ()=>this.successAlert());
 	}
 
 	successAlert(){

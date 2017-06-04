@@ -10,15 +10,15 @@ export class Customer {
 	phone? : string;
 	date? : string;
 
-	constructor( name, email, contact, address, city, state, zip, phone, date ){
-		this.name = name;
-		this.email = email;
-		this.contact = contact;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-		this.phone = phone;
-		this.date = date;
+	constructor( data ){
+		this.name = data.name;
+		this.email = data.email;
+		this.contact = data.contact;
+		this.address = data.address;
+		this.city = data.city;
+		this.state = data.state;
+		this.zip = data.zip;
+		this.phone = data.phone;
+		this.date = data.date;
 	}
 }

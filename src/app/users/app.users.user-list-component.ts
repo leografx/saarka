@@ -15,7 +15,7 @@ export class UserListComponent implements OnInit{
 	constructor( private apiService : ApiService ){}
 
 	ngOnInit(){
-		this.apiService.getAll('users').subscribe(data => this.users = data);
+		this.users = this.apiService.getAll('users');
 	}
 
 	edit(user){

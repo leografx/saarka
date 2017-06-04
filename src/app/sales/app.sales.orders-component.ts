@@ -2,27 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import  * as moment from 'moment';
+import { Order } from "app/@schema/order";
+import { Item } from "app/@schema/item";
+import { Customer } from "app/@schema/customer";
+
 
 @Component({
 	selector:'sales-order',
 	templateUrl:'sales-orders.html',
-	styles:[`.fa{
-		position:absolute;
-		right:10px;
-		top:15px;
-		color:red;
-	}`],
+	styles:[`
+		.fa{
+			position:absolute;
+			right:10px;
+			top:15px;
+			color:red;
+		}
+	`],
 	providers:[ApiService]
 })
 
 export class SalesOrdersComponent implements OnInit{
-	typeahead = { name:'customers', field:'name', show : false , filter:'' };
 	id:number;
+	order 		: Order = new Order();
+	customer	: Customer;
+	items		: Item[] = [];
 	nameCount:number;
 	today = moment();
-	customer	: Customer;
-	items		: Items[] = [];
-	order 		: Order = new Order();
+	typeahead = { name:'customers', field:'name', show : false , filter:'' };
 	
 	constructor( private apiService:ApiService,private activeRoute:ActivatedRoute, private router:Router ){}
 
@@ -89,7 +95,6 @@ export class SalesOrdersComponent implements OnInit{
 
 	deleteItem(i){
 		this.items.splice(i,1);
-		//console.log(i)
 	}
 
 	typeaheadselectedItem(e){
@@ -129,17 +134,17 @@ export class SalesOrdersComponent implements OnInit{
 
 		if(e==0){
 			this.order.customer_id = null;
-			let customer = new Customer(
-					this.order.name,
-					this.order.email,
-					this.order.contact,
-					this.order.address,
-					this.order.city,
-					this.order.state,
-					this.order.zip,
-					this.order.phone,
-					this.order.date
-				);
+			let customer = new Customer({
+				name:		this.order.name,
+				email:		this.order.email,
+				contact:	this.order.contact,
+				address:	this.order.address,
+				city:		this.order.city,
+				state:		this.order.state,
+				zip:		this.order.zip,
+				phone:		this.order.phone,
+				date:		this.order.date
+			});
 			this.customer = customer;
 		}
 	}
@@ -164,91 +169,6 @@ export class SalesOrdersComponent implements OnInit{
 			status:''	
 		}
 	}
-}
-
-export class Customer {
-	id? : string;
-	name? : string;
-	email? : string;
-	contact? : string;
-	address? : string;
-	city? : string;
-	state? : string;
-	zip? : string;
-	phone? : string;
-	date? : string;
-
-	constructor( name, email, contact, address, city, state, zip, phone, date ){
-		this.name = name;
-		this.email = email;
-		this.contact = contact;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-		this.phone = phone;
-		this.date = date;
-	}
-}
-
-export class Order{
-	id?:number;
-	ship_date?:string;
-	name:string;
-	email:string;
-	customer_id:number;
-	contact:string;
-	shipping_address:string;
-	shipping_city:string;
-	shipping_state:string;
-	shipping_zip:string;
-	address:string;
-	city:string;
-	state:string;
-	zip:string;
-	date?:string;
-	phone:string;
-	status:string;
-}
-
-export class Items{
-	id?:number;
-	product_id:number;
-	customer_id:number;
-	order_id:number;
-	item_no:string;
-	name:string;
-	description?:string;
-	case:string;
-	category:string;
-	status:string;
-	size:string;
-	cut_score:string;
-	par:number;
-	on_hand:number;
-	qa_hold:number;
-	available:number;
-	quantity:number;
-	order_date:string;
-	order_ship_date:string;
-	order_name:string;
-	order_email:string;
-	order_address:string;
-	order_city:string;
-	order_state:string;
-	order_zip:string;
-	order_phone:string;
-	shipping_client:string;
-	shipping_address:string;
-	shipping_city:string;
-	shipping_attention:string;
-	shipping_state:string;
-	shipping_zip:string;
-	inventory_quantity:number;
-	inventory_size:string;
-	inventory_weight:number;
-	inventory_weight_unit:string;
-	inventory_location:string;	
 }
 
 

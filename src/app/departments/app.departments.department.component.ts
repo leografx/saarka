@@ -19,7 +19,7 @@ export class DepartmentComponent{
 	selectedDepartment:EventEmitter<any> = new EventEmitter<any>();
 
 	constructor(private apiService:ApiService, private router:Router ){
-		this.apiService.getAll('departments').subscribe( (data)=> this.departments = data );
+		this.departments = this.apiService.getAll('departments');
 		if(this.router.url==="/departments"){
 			this.toggleDepartment=false;
 			this.getAllDepartments();

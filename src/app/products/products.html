@@ -1,130 +1,43 @@
-	<div class="row">
-		<div class="col-md-6 text-left">
-			<a *ngIf="prevProduct" class="btn btn-link" (click)="navClick(prevProduct)">
-				<span class="fa fa-angle-double-left"></span>
-				<div class="label annies-primary">{{ prevProduct.item_no }}</div>
-				{{prevProduct.name}} 
-			</a>
-		</div>
-		
-		<div class="col-md-6 text-right">
-			<a *ngIf="nexProduct"  class="btn btn-link" (click)="navClick(nexProduct)">
-				<div class="label annies-primary">{{ nexProduct.item_no }}</div>
-				{{nexProduct.name}}
-				<span class="fa fa-angle-double-right"></span>
-			</a>
-		</div>
-	</div>
+<div class="row">
+    <div class="col-md-6 text-left">
+        <a *ngIf="prevProduct" class="btn btn-link" (click)="navClick(prevProduct)">
+            <span class="fa fa-angle-double-left"></span>
+            <div class="label annies-primary">{{ prevProduct.item_no }}</div>
+            {{prevProduct.name}}
+        </a>
+    </div>
 
-	<div class="row">
-		<div class="col-md-12">
+    <div class="col-md-6 text-right">
+        <a *ngIf="nexProduct" class="btn btn-link" (click)="navClick(nexProduct)">
+            <div class="label annies-primary">{{ nexProduct.item_no }}</div>
+            {{nexProduct.name}}
+            <span class="fa fa-angle-double-right"></span>
+        </a>
+    </div>
+</div>
 
-			<div class="input-group">
+<div class="row">
+    <div class="col-md-12">
 
-					<span class="input-group-btn">
+        <div class="input-group">
+
+            <span class="input-group-btn">
 						
 						<button (click)="showProducts=!showProducts;productModel=''" type="button" class="btn btn-default dropdown-toggle">Products 
 							<span class="caret"></span>
-						</button>
-					</span>
-					
-					<input 
-					(focus)="$event.target.select();showProducts=true" 
-					type="text" 
-					[(ngModel)]="productModel" 
-					class="form-control">
-				
-			</div>
-		</div>
-	</div>	
-				
-	<div class="list-group" *ngIf="showProducts">
-	  	<a href="#" (click)="$event.preventDefault();selected(product);productOrderSelected(product);showProducts=false"
-			class="col-md-3  list-group-item {{ isOn[i] }}"
-			[ngClass]="{'alert-low':product.on_hand < 10}"
-	  		*ngFor="let product of products | filter:productModel; index as i;">
-	  			<span class="badge">{{ product.available|number:'1.2-2' }}</span>
-	  			<strong>{{ product.item_no }} </strong>
-	  			<br>	{{ product.name }}
-	  	</a>
-	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            </button>
+            </span>
+
+            <input (focus)="$event.target.select();showProducts=true" type="text" [(ngModel)]="productModel" class="form-control">
+
+        </div>
+    </div>
+</div>
+
+<div class="list-group" *ngIf="showProducts">
+    <a href="#" (click)="$event.preventDefault();selected(product);productOrderSelected(product);showProducts=false" class="col-md-3  list-group-item {{ isOn[i] }}" [ngClass]="{'alert-low':product.on_hand < 10}" *ngFor="let product of products | filter:productModel; index as i;">
+        <span class="badge">{{ product.available|number:'1.2-2' }}</span>
+        <strong>{{ product.item_no }} </strong>
+        <br> {{ product.name }}
+    </a>
+</div>

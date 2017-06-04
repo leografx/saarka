@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from "../services/api.service";
 import 'rxjs/add/operator/map';
+import { ISubscription } from "rxjs/Subscription";
 
 @Component({
 	selector:'products',
@@ -11,7 +12,8 @@ import 'rxjs/add/operator/map';
 	outputs:['selectedProduct','nextProduct','listOfProducts','orderProductSelected']
 })
 
-export class ProductComponent implements OnInit{
+export class ProductComponent implements OnInit,OnDestroy{
+	subscription:ISubscription
 	nextProduct = new EventEmitter<any>()
 	listOfProducts =new EventEmitter<any>()
 	selectedProduct = new EventEmitter<any>()
@@ -30,7 +32,7 @@ export class ProductComponent implements OnInit{
 	constructor(private api:ApiService){}
 
 	ngOnInit(){
-		this.api.getAll('products')
+		this.subscription = this.api.getAll('products')
 		.subscribe( (data) => {this.products = data; return data},
 			null,
 			()=>{
@@ -41,6 +43,10 @@ export class ProductComponent implements OnInit{
 			this.selected(this.products[0]);
 			this.productModel = this.products[0].name;
 		});	
+	}
+
+	ngOnDestroy(){
+		this.subscription.unsubscribe();
 	}
 
 	selected(product){

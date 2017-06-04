@@ -28,7 +28,7 @@ export class VendorsComponent{
 	
 	
 	constructor(private api:ApiService){
-		api.getAll('vendors').subscribe(data => this.vendors = data);
+		this.vendors = api.getAll('vendors');
 	}
 
 	selected(vendor){

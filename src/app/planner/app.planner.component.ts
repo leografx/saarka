@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/scan';
+import 'rxjs/add/operator/takeWhile';
 
 import { IProduct } from '../products/app.products.iproduct-interface';
 import { ICalendar, Calendar } from '../calendar/app.calendar.interface';
@@ -44,6 +45,7 @@ export class PlannerComponent implements OnInit, OnDestroy{
 	totalHold = 0;
 	showForecastButton = true;
 	chartType='bar';
+	alive = true;
 
 	@ViewChild('forecast') forecast : ForecastComponent
 	
@@ -57,7 +59,7 @@ export class PlannerComponent implements OnInit, OnDestroy{
 
 	ngOnInit(){
 		this.user = this.authService.getUser();
-		this.apiService.getAll('products').subscribe(data => {
+		this.apiService.getAll('products').takeWhile(()=>this.alive).subscribe(data => {
 			this.products = data;
 			//console.log('fetching All products...');
 			this.getItems(this.products[0]);
@@ -73,6 +75,7 @@ export class PlannerComponent implements OnInit, OnDestroy{
 	}
 
 	ngOnDestroy(){
+		this.alive = false;
 		this.isLoading=true;
 	}
 
@@ -99,7 +102,7 @@ export class PlannerComponent implements OnInit, OnDestroy{
 		
 		//console.log('product populated');
 		
-		this.apiService.get_qa_holds(product,'Hold').subscribe( data => { 
+		this.apiService.get_qa_holds(product,'Hold').takeWhile(()=>this.alive).subscribe( data => { 
 			//console.log('...fetching qaHold Data')
 			this.qaHoldsData = data;
 		},
@@ -205,11 +208,11 @@ export class PlannerComponent implements OnInit, OnDestroy{
 	}
 
 	getPendingOrders(){
-		this.apiService.getPendingOrders().subscribe(data => this.pendingOrders = data);
+		this.apiService.getPendingOrders().takeWhile(()=>this.alive).subscribe(data => this.pendingOrders = data);
 	}
 
 	getPendingItems(){
-		this.apiService.getPendingItems().subscribe(data => this.itemOrders = data);
+		this.apiService.getPendingItems().takeWhile(()=>this.alive).subscribe(data => this.itemOrders = data);
 	}
 
 	//nextProductFoward(e){

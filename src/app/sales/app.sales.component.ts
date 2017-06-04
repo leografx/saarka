@@ -17,8 +17,6 @@ export class SalesComponent implements OnInit{
 
 	ngOnInit(){
 		console.log('...Sales Order List Init');
-		this.apiService.getPendingOrders().subscribe(data => this.orders = data,
-			error => console.log(error), 
-			()=> console.log(this) );
+		this.orders = this.apiService.getPendingOrders();
 	}
 }
